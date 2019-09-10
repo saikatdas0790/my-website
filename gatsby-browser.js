@@ -1,7 +1,7 @@
-// custom typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+/**
+ * Implement Gatsby's Browser APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/browser-apis/
+ */
 
-import { wrapRootElement as wrap } from './wrap-root-element'
-
-export const wrapRootElement = wrap
+// You can delete this file if you're not using it
