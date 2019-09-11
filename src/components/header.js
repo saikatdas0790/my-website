@@ -1,32 +1,25 @@
 import { Link } from "gatsby";
 import React from "react";
+// import "typeface-permanent-marker";
 
-const Header = ({ siteTitle = "Welcome to my website" }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+const styles = {
+  header: {
+    background: `linear-gradient(90deg, #5DD9C1 0%, #FBBEBE 100%)`
+    // fontFamily: `Permanent Marker`
+  }
+};
+
+const Header = () => (
+  <header style={styles.header}>
+    <Link>
+      <h2>My Blog</h2>
+    </Link>
+    <Link>
+      <h2>Showcase</h2>
+    </Link>
+    <Link>
+      <h2>Reach Me</h2>
+    </Link>
   </header>
 );
 
