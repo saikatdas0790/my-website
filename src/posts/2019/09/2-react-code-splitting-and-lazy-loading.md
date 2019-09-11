@@ -1,3 +1,11 @@
+---
+title: 'React: Code Splitting and Lazy Loading'
+author: Saikat Das
+tags: 'react,reactjs,codesplitting,lazyloading,router,reachrouter'
+categories: 'programming,react'
+date: '2019-09-05'
+---
+
 ## Why do we need to split code and lazy load it?
 
 As we saw in our earlier post, in a single page React application, all the statically imported components are fetched on page load even though the user might only be visiting a single route that displays a particular component.
@@ -60,12 +68,3 @@ Here, we are using the new *dynamic import* syntax with the React *lazy loading 
 Note that the modules to be dynamically imported have to be **default exports**.
 
 That's it for code splitting and lazy loading. Do you think this is a step-forward in the way we structure our code or is this too complicated to bother with in our single page applications? Leave me a comment with your thoughts.
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6ICdSZWFjdDogQ29kZSBTcG
-xpdHRpbmcgYW5kIExhenkgTG9hZGluZydcbmF1dGhvcjogU2Fp
-a2F0IERhc1xudGFnczogJ3JlYWN0LHJlYWN0anMsY29kZS1zcG
-xpdHRpbmcsbGF6eS1sb2FkaW5nLHJvdXRlcixyZWFjaC1yb3V0
-ZXInXG5jYXRlZ29yaWVzOiAncHJvZ3JhbW1pbmcscmVhY3QnXG
-5kYXRlOiAnMjAxOS0wOS0wNSdcbiIsImhpc3RvcnkiOlstNDY3
-MzkzOTM4LDE2MzEyODgxODhdfQ==
--->

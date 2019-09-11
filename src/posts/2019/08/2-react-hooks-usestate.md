@@ -1,3 +1,12 @@
+---
+title: 'React Hooks: useState'
+author: Saikat Das
+tags: 'react,reactjs,hooks'
+categories: 'programming,react'
+date: '2019-08-29'
+featuredImage: https://storage.cloud.google.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20useState.jpg
+---
+
 Before _hooks_ came around, we've mostly been using function components to write components **without** any state. This would mean a component with HTML markup and data coming in from a parent component through props. This is the fundamental one-way data flow in React where data flows from the top into children components.
 
 Now, if any of these components needed to have its own data, specific to itself or its children, also known as "_state_" in React land, it would need to be a class components. So, while writing components in React, one would start off with a function component for [prescribed benefits](https://www.google.com/search?q=react+classes+vs+functions) but would ultimately need to convert to a class component in case they needed their component to be stateful. This would need copious amounts of refactoring and being mindful of the revered **_this_**  :neutral_face:
@@ -58,15 +67,3 @@ function ExampleWithManyStates() {
 }
 ```
 This new way of doing things just makes me a more productive developer. What do you think? Let me know in the comments
-
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6ICdSZWFjdCBIb29rczogdX
-NlU3RhdGUnXG5hdXRob3I6IFNhaWthdCBEYXNcbnRhZ3M6ICdy
-ZWFjdCxyZWFjdGpzLGhvb2tzJ1xuY2F0ZWdvcmllczogJ3Byb2
-dyYW1taW5nLHJlYWN0J1xuZGF0ZTogJzIwMTktMDgtMjknXG5m
-ZWF0dXJlZEltYWdlOiA+LVxuICBodHRwczovL3N0b3JhZ2UuZ2
-9vZ2xlYXBpcy5jb20vZGFpbHkuc2Fpa2F0LmRldi8yMDE5LzA4
-L1JlYWN0JTIwSG9va3MlMjAtJTIwdXNlU3RhdGUuanBnXG4iLC
-JoaXN0b3J5IjpbMTMwMzk2OTM0MCw1NTA1ODYzMDgsLTIzMjQ3
-NTAwLC0yMDg4NzQ2NjEyXX0=
--->

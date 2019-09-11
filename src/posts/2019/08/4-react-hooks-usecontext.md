@@ -1,3 +1,12 @@
+---
+title: 'React Hooks: useContext'
+author: Saikat Das
+tags: 'react,reactjs,hooks'
+categories: 'programming,react'
+date: '2019-09-03'
+featuredImage: https://storage.cloud.google.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20useContext.jpg
+---
+
 ## Primer on React Context
 
 The way data flows in React is uni-directional, from the top to the bottom, the parent component passes required data down into the children components. This is widely hailed as a game-changer as compared to two-way data binding as it makes reasoning about data easier which in turn leads to lesser bugs.
@@ -44,14 +53,3 @@ Here we use the `useContext` hook to read the value from the passed Context obje
 This is a more elegant solution of consuming context as compared to the earlier way of declaring static properties on the class component.
 
 That's it for `useContext`. Do you think it improves on the earlier Context API or is it just a fancy packaging over the old API? Let me know in the comments
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6ICdSZWFjdCBIb29rczogdX
-NlQ29udGV4dCdcbmF1dGhvcjogU2Fpa2F0IERhc1xudGFnczog
-J3JlYWN0LHJlYWN0anMsaG9va3MnXG5jYXRlZ29yaWVzOiAncH
-JvZ3JhbW1pbmcscmVhY3QnXG5kYXRlOiAnMjAxOS0wOS0wMydc
-bmZlYXR1cmVkSW1hZ2U6ID4tXG4gIGh0dHBzOi8vc3RvcmFnZS
-5nb29nbGVhcGlzLmNvbS9kYWlseS5zYWlrYXQuZGV2LzIwMTkv
-MDgvUmVhY3QlMjBIb29rcyUyMC0lMjB1c2VDb250ZXh0LmpwZ1
-xuIiwiaGlzdG9yeSI6WzMzODE2NTk4NywtMzkzMzcsOTU5MTU2
-NDI3XX0=
--->

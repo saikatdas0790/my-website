@@ -1,3 +1,12 @@
+---
+title: 'React Hooks: useEffect'
+author: Saikat Das
+tags: 'react,reactjs,hooks'
+categories: 'programming,react'
+date: '2019-09-02'
+featuredImage: https://storage.cloud.google.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20useEffect.jpg
+---
+
 ## What is an Effect?
 
 An effect, or "side effect" as popularly known, is anything that happens inside a function which doesn't relate directly to the function being executed. The side effect reaches out of the scope of the function and performs operations that are not limited to the executing function. For example,
@@ -47,14 +56,3 @@ function Example() {
 Here, the effect is setting the page title to the number of times the button has been clicked. `useEffect` runs on every render including the initial load. So, it is performing responsibilities of both the `componentDidMount` and `componentDidUpdate` lifecycle methods. Finally, the function returned from useEffect is called when the component is *unmounted*, hence, `componentWillUnmount` is also covered by useEffect
 
 `useEffect` is a really neat little utility that every React developer should add to their React tool-belt as it makes handling component lifecycle a breeze. Think we can do better. Let me know in the comments.
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6ICdSZWFjdCBIb29rczogdX
-NlRWZmZWN0J1xuYXV0aG9yOiBTYWlrYXQgRGFzXG50YWdzOiAn
-cmVhY3QscmVhY3Rqcyxob29rcydcbmNhdGVnb3JpZXM6ICdwcm
-9ncmFtbWluZyxyZWFjdCdcbmRhdGU6ICcyMDE5LTA5LTAyJ1xu
-ZmVhdHVyZWRJbWFnZTogPi1cbiAgaHR0cHM6Ly9zdG9yYWdlLm
-dvb2dsZWFwaXMuY29tL2RhaWx5LnNhaWthdC5kZXYvMjAxOS8w
-OC9SZWFjdCUyMEhvb2tzJTIwLSUyMHVzZUVmZmVjdC5qcGdcbi
-IsImhpc3RvcnkiOlstNDUxNjU0NjI1LC0xMjU1MDYyNzA3XX0=
-
--->
