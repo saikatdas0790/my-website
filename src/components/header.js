@@ -1,25 +1,64 @@
 import { Link } from "gatsby";
 import React from "react";
-// import "typeface-permanent-marker";
+import Icon from "../images/icon-bordered.svg";
+import { css } from "@emotion/core";
 
-const styles = {
-  header: {
-    background: `linear-gradient(90deg, #5DD9C1 0%, #FBBEBE 100%)`
-    // fontFamily: `Permanent Marker`
+const headerStyles = css`
+  background: linear-gradient(90deg, #5dd9c1 0%, #fbbebe 100%);
+  font-family: "Permanent Marker";
+  margin: 0;
+
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    li {
+      flex: 1 1 auto;
+      font-size: 1.5rem;
+      padding: 0 0.2rem;
+
+      :first-child {
+        a {
+          display: flex;
+          img {
+            width: 32px;
+          }
+        }
+      }
+
+      :not(:first-child) {
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
   }
-};
+`;
 
 const Header = () => (
-  <header style={styles.header}>
-    <Link>
-      <h2>My Blog</h2>
-    </Link>
-    <Link>
-      <h2>Showcase</h2>
-    </Link>
-    <Link>
-      <h2>Reach Me</h2>
-    </Link>
+  <header css={headerStyles}>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">
+            <img src={Icon} alt="Homepage" />
+          </Link>
+        </li>
+        <li>
+          <Link to="/blog">My Blog</Link>
+        </li>
+        <li>
+          <Link to="/projects">Showcase</Link>
+        </li>
+        <li>
+          <Link to="/contact">Reach Me</Link>
+        </li>
+      </ul>
+    </nav>
   </header>
 );
 

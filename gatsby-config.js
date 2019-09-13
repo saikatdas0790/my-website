@@ -46,6 +46,19 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`
       }
+    },
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        env: {
+          production: {
+            plugins: ["emotion"]
+          },
+          development: {
+            plugins: [["emotion", { sourceMap: true }]]
+          }
+        }
+      }
     }
   ]
 };
