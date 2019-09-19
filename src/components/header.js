@@ -18,7 +18,8 @@ const headerStyles = css`
     li {
       flex: 1 1 auto;
       font-size: 1.5rem;
-      padding: 0 0.2rem;
+      display: flex;
+      justify-content: center;
 
       :first-child {
         a {

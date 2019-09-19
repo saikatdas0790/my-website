@@ -1,8 +1,11 @@
 # TODO
 
-- Header
-- Footer
+- ~~Header~~
+- ~~Footer~~
 - Layout
+  - Intro Section
+  - Recent Posts
+  - Popular Posts
 - Query for recent posts
 - Section on recent posts
 - Query for Most viewed posts
