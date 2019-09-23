@@ -31,60 +31,65 @@ const SectionBreak = () => {
   );
 };
 
-const introSectionStyles = css`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 5rem 0;
-  p {
-    span {
-      img {
-        width: 1.5rem;
+const IntroSection = () => {
+  const introSectionStyles = css`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5rem 0;
+    p {
+      span {
+        img {
+          width: 1.5rem;
+        }
       }
     }
-  }
-`;
+  `;
+  return (
+    <section css={introSectionStyles}>
+      <p>
+        <Emoji label="waving hand" src={hiEmoji}></Emoji>, I'm Saikat!
+        <br />
+        I'm a programmer based out of{" "}
+        <Emoji label="India" src={indiaIcon}></Emoji>
+        <br />I like <Emoji
+          label="computers"
+          src={computerIcon}
+        ></Emoji> and <Emoji label="gaming" src={gamingIcon}></Emoji>
+        <br />
+        Connect with me on{" "}
+        <a
+          href="https://www.linkedin.com/in/saikat-das-13674166/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Emoji label="LinkedIn" src={linkedinIcon}></Emoji>
+        </a>{" "}
+        or{" "}
+        <a
+          href="https://github.com/saikatdas0790"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Emoji label="Github" src={githubIcon}></Emoji>
+        </a>
+      </p>
+    </section>
+  );
+};
 
-const IntroSection = () => (
-  <section css={introSectionStyles}>
-    <p>
-      <Emoji label="waving hand" src={hiEmoji}></Emoji>, I'm Saikat!
-      <br />
-      I'm a programmer based out of{" "}
-      <Emoji label="India" src={indiaIcon}></Emoji>
-      <br />I like <Emoji label="computers" src={computerIcon}></Emoji> and{" "}
-      <Emoji label="gaming" src={gamingIcon}></Emoji>
-      <br />
-      Connect with me on{" "}
-      <a
-        href="https://www.linkedin.com/in/saikat-das-13674166/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Emoji label="LinkedIn" src={linkedinIcon}></Emoji>
-      </a>{" "}
-      or{" "}
-      <a
-        href="https://github.com/saikatdas0790"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Emoji label="Github" src={githubIcon}></Emoji>
-      </a>
-    </p>
-  </section>
-);
+const RecentArticlesSection = () => {
+  const recentArticlesSectionStyles = css`
+    h1 {
+    }
+  `;
 
-const recentArticlesSectionStyles = css`
-  h1 {
-  }
-`;
-
-const RecentArticlesSection = () => (
-  <section css={recentArticlesSectionStyles}>
-    <h1>Recent Articles</h1>
-  </section>
-);
+  return (
+    <section css={recentArticlesSectionStyles}>
+      <h1>Recent Articles</h1>
+    </section>
+  );
+};
 
 const IndexPage = () => (
   <>

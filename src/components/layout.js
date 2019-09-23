@@ -1,24 +1,18 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-
 import Header from "./header";
 import Footer from "./footer";
+import { css } from "@emotion/core";
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  const bodyStyles = css`
+    width: 90vw;
+    max-width: 960px;
+  `;
 
   return (
     <>
       <Header></Header>
-      <main>{children}</main>
+      <main css={bodyStyles}>{children}</main>
       <Footer></Footer>
     </>
   );

@@ -59,6 +59,7 @@ module.exports = {
           }
         }
       }
-    }
+    },
+    `gatsby-transformer-remark`
   ]
 };
