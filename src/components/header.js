@@ -8,32 +8,37 @@ const headerStyles = css`
   font-family: "Permanent Marker";
   margin: 0;
 
-  ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  @media (max-width: 960px) {
+  }
 
-    li {
-      flex: 1 1 auto;
-      font-size: 1.5rem;
+  @media (min-width: 961px) {
+    ul {
       display: flex;
-      justify-content: center;
+      list-style: none;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
 
-      :first-child {
-        a {
-          display: flex;
-          img {
-            width: 32px;
+      li {
+        flex: 1 1 auto;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+
+        :first-child {
+          a {
+            display: flex;
+            img {
+              width: 32px;
+            }
           }
         }
-      }
 
-      :not(:first-child) {
-        a {
-          text-decoration: none;
-          color: white;
+        :not(:first-child) {
+          a {
+            text-decoration: none;
+            color: white;
+          }
         }
       }
     }
@@ -54,9 +59,6 @@ const Header = () => (
         </li>
         <li>
           <Link to="/projects">Showcase</Link>
-        </li>
-        <li>
-          <Link to="/contact">Reach Me</Link>
         </li>
       </ul>
     </nav>

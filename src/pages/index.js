@@ -6,7 +6,7 @@ import gamingIcon from "../images/emoji/gaming.svg";
 import githubIcon from "../images/emoji/github.svg";
 import linkedinIcon from "../images/emoji/linkedin.svg";
 import sectionBreak from "../images/section-break.svg";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 import { css } from "@emotion/core";
 
@@ -91,12 +91,43 @@ const RecentArticlesSection = () => {
   );
 };
 
-const IndexPage = () => (
-  <>
-    <IntroSection></IntroSection>
-    <SectionBreak></SectionBreak>
-    <RecentArticlesSection></RecentArticlesSection>
-  </>
-);
+const IndexPage = ({ data }) => {
+  const bodyStyles = css`
+    width: 90vw;
+    max-width: 960px;
+    margin: 0 auto;
+  `;
+
+  return (
+    <main css={bodyStyles}>
+      <IntroSection></IntroSection>
+      <SectionBreak></SectionBreak>
+      <RecentArticlesSection
+        postData={data.recentArticlesSection}
+      ></RecentArticlesSection>
+    </main>
+  );
+};
+
+export const query = graphql`
+  {
+    recentArticlesSection: allMarkdownRemark(
+      limit: 10
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            categories
+            title
+            publishDate: date(fromNow: true)
+            date: date(formatString: "YYYYMMDD")
+          }
+          timeToRead
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;
