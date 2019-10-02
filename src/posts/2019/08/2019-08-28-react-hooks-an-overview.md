@@ -1,3 +1,15 @@
+---
+title: "React Hooks: An Overview"
+author: Saikat Das
+tags:
+  - react
+  - reactjs
+  - hooks
+featuredImage: https://storage.googleapis.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20An%20Overview.jpg
+icon: "react.svg"
+date: "2019-08-28"
+---
+
 This is an overview on what React Hooks are and how to get started using them. This is going to be a multipart series on the common React Hooks and how to use them.
 
 ## What are React Hooks?
@@ -69,16 +81,3 @@ Also, note that React Hooks **do not** work inside classes
 They are covered in great detail in the React Docs available [here](https://reactjs.org/docs/hooks-reference.html)
 
 I'll be going through the basic hooks listed above in detail in subsequent posts
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6ICdSZWFjdCBIb29rczogQW
-4gT3ZlcnZpZXcnXG5hdXRob3I6IFNhaWthdCBEYXNcbnRhZ3M6
-ICdyZWFjdCxyZWFjdGpzLGhvb2tzJ1xuY2F0ZWdvcmllczogJ3
-Byb2dyYW1taW5nLHJlYWN0J1xuZmVhdHVyZWRJbWFnZTogPi1c
-biAgaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL2RhaW
-x5LnNhaWthdC5kZXYvMjAxOS8wOC9SZWFjdCUyMEhvb2tzJTNB
-JTIwQW4lMjBPdmVydmlldy9SZWFjdCUyMEhvb2tzJTIwLSUyME
-FuJTIwT3ZlcnZpZXcuanBnXG5kYXRlOiAnMjAxOS0wOC0yOCdc
-biIsImhpc3RvcnkiOlsxNTIyMTMxMzIwLC00MzYzODkwNTYsLT
-EwOTY2ODEyNzksLTI0NDUxOTY0NCwtMTA5NjY4MTI3OSwyMDI0
-MTY1OTgzLC0zMzA0MjkzNjhdfQ==
--->

@@ -1,33 +1,87 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Icon from "../images/icon-bordered.svg";
+import { css } from "@emotion/core";
 
-const Header = ({ siteTitle = "Welcome to my website" }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`
-          }}
-        >
-          {siteTitle}
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const listenerForScroll = () => {
+      if (window.scrollY > 0) setIsScrolled(true);
+      else if (window.scrollY === 0) setIsScrolled(false);
+    };
+    window.addEventListener("scroll", listenerForScroll);
+    return () => {
+      window.removeEventListener("scroll", listenerForScroll);
+    };
+  }, []);
+
+  const headerStyles = css`
+    background: linear-gradient(90deg, #5dd9c1 0%, #fbbebe 100%);
+    transition: padding 0.5s ease, box-shadow 0.5s ease;
+    padding: 0.25rem 0;
+    ${isScrolled
+      ? `
+          box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+          padding: 0 0;
+    `
+      : ""}
+
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    font-family: "Permanent Marker";
+    margin: 0;
+    > nav {
+      width: 90vw;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      > a > img {
+        width: 2rem;
+        margin-left: 2rem;
+      }
+      > ul {
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        list-style: none;
+        > li {
+          margin-right: 2rem;
+          > a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+          }
+          > a:hover {
+            text-decoration: wavy underline;
+          }
+        }
+      }
+    }
+  `;
+
+  return (
+    <header css={headerStyles}>
+      <nav>
+        <Link to="/">
+          <img src={Icon} alt="Homepage" />
         </Link>
-      </h1>
-    </div>
-  </header>
-);
+        <ul>
+          <li>
+            <Link to="/blog">My Blog</Link>
+          </li>
+          <li>
+            <Link to="/projects">Showcase</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

@@ -1,3 +1,14 @@
+---
+title: Routing in React
+author: Saikat Das
+tags:
+  - react
+  - reactjs
+  - hooks
+date: '2019-09-04'
+icon: "react.svg"
+---
+
 ## Primer on client-side Routing
 
 Traditionally, **routing** on the web has relied on *URLs* to navigate between pages. Put simply, when a URL is put into the browser, the browser renders a page based on the results returned by the server. On subsequent navigation to other pages on the site, the browser performs a full-page load on the page navigated to including parts of the page that didn't change such as the *header* and/or the *footer*
@@ -55,11 +66,3 @@ Note that, **both** the `Home` and the `Dashboard` component is loaded by the br
 This is a fantastic use case for **code-splitting** and **lazy loading** our components which we'll cover in detail in another article.
 
 Think client-side routing is the bomb or are you sceptical of it's benefits and wary of the SEO hits that arise from it? Let me know in the comments.
-<!--stackedit_data:
-eyJwcm9wZXJ0aWVzIjoidGl0bGU6IFJvdXRpbmcgaW4gUmVhY3
-RcbmF1dGhvcjogU2Fpa2F0IERhc1xudGFnczogJ3JlYWN0LHJl
-YWN0anMscm91dGVyLHJlYWNoLXJvdXRlcidcbmNhdGVnb3JpZX
-M6ICdwcm9ncmFtbWluZyxyZWFjdCdcbmRhdGU6ICcyMDE5LTA5
-LTA0J1xuIiwiaGlzdG9yeSI6Wy0xNTAxMzA1Nzg5LDEzMTAzND
-E0NTgsLTY0OTY0MjAxOV19
--->
