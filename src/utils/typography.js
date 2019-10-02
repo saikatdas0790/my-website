@@ -1,6 +1,4 @@
 import Typography from "typography";
-import "typeface-muli";
-import "typeface-permanent-marker";
 import CodePlugin from "typography-plugin-code";
 
 const theme = {
