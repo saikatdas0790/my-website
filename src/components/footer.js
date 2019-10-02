@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { css } from "@emotion/core";
 
 const footerStyles = css`
+  margin-bottom: 1rem;
   ul {
     display: flex;
     list-style: none;
@@ -23,13 +24,10 @@ const Footer = () => (
     <nav>
       <ul>
         <li>
-          <Link>My Blog</Link>
+          <Link to="/blog">My Blog</Link>
         </li>
         <li>
-          <Link>Showcase</Link>
-        </li>
-        <li>
-          <Link>Reach Me</Link>
+          <Link to="/projects">Showcase</Link>
         </li>
       </ul>
     </nav>

@@ -1,9 +1,12 @@
 ---
 title: Routing in React
 author: Saikat Das
-tags: 'react,reactjs,router,reachrouter'
-categories: 'programming,react'
+tags:
+  - react
+  - reactjs
+  - hooks
 date: '2019-09-04'
+icon: "react.svg"
 ---
 
 ## Primer on client-side Routing

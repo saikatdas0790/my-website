@@ -1,9 +1,13 @@
 ---
 title: 'React: Suspense and Error Boundaries'
 author: Saikat Das
-tags: 'react,reactjs,suspense,errorhandling'
-categories: 'programming,react'
+tags:
+  - react
+  - reactjs
+  - suspense
+  - errorhandling
 date: '2019-09-06'
+icon: "react.svg"
 ---
 
 ## React Suspense

@@ -1,9 +1,12 @@
 ---
 title: 'React Hooks: useState'
 author: Saikat Das
-tags: 'react,reactjs,hooks'
-categories: 'programming,react'
+tags:
+  - react
+  - reactjs
+  - hooks
 date: '2019-08-29'
+icon: "react.svg"
 featuredImage: https://storage.cloud.google.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20useState.jpg
 ---
 

@@ -6,13 +6,13 @@ import gamingIcon from "../images/emoji/gaming.svg";
 import githubIcon from "../images/emoji/github.svg";
 import linkedinIcon from "../images/emoji/linkedin.svg";
 import sectionBreak from "../images/section-break.svg";
-import { Link, graphql } from "gatsby";
-
+import gmailIcon from "../images/emoji/gmail.svg";
+import { graphql, Link } from "gatsby";
 import { css } from "@emotion/core";
 
 const Emoji = ({ label, src }) => (
   <span role="img" aria-label={label}>
-    <img src={src} alt={label} />
+    <img src={src} alt={label} title={label} />
   </span>
 );
 
@@ -48,7 +48,7 @@ const IntroSection = () => {
   return (
     <section css={introSectionStyles}>
       <p>
-        <Emoji label="waving hand" src={hiEmoji}></Emoji>, I'm Saikat!
+        <Emoji label="Hi" src={hiEmoji}></Emoji>, I'm Saikat!
         <br />
         I'm a programmer based out of{" "}
         <Emoji label="India" src={indiaIcon}></Emoji>
@@ -73,27 +73,112 @@ const IntroSection = () => {
         >
           <Emoji label="Github" src={githubIcon}></Emoji>
         </a>
+        <br />
+        You can also{" "}
+        <a
+          href="mailto:saikatdas0790@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Emoji label="Gmail" src={gmailIcon}></Emoji>
+        </a>{" "}
+        me in case you want to talk.
       </p>
     </section>
   );
 };
 
-const RecentArticlesSection = () => {
+const RecentArticlesSection = ({ postData }) => {
   const recentArticlesSectionStyles = css`
-    h1 {
+    > h1 {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    > ul {
+      list-style: none;
+      > li {
+        padding: 1rem 0;
+        transition: box-shadow 0.25s ease;
+        > a {
+          text-decoration: none;
+          display: grid;
+          grid-template-columns: 2fr 7fr 3fr;
+          grid-template-areas:
+            "icon title tags"
+            "icon date tags";
+          align-items: center;
+          color: black;
+          > img {
+            grid-area: icon;
+            justify-self: center;
+            margin: 0.5rem;
+          }
+          > h2 {
+            font-family: "Muli";
+            grid-area: title;
+          }
+          > span:nth-of-type(1) {
+            grid-area: date;
+            opacity: 0.5;
+          }
+          > span:nth-of-type(2) {
+            grid-area: tags;
+            opacity: 0.5;
+          }
+          @media (max-width: 768px) {
+            grid-template-columns: max-content 1fr;
+            grid-template-areas:
+              "icon title"
+              "icon date"
+              "icon tags";
+          }
+        }
+      }
+      > li:hover,
+      > li:active {
+        box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.2),
+          0 1px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+      }
     }
   `;
-
   return (
     <section css={recentArticlesSectionStyles}>
       <h1>Recent Articles</h1>
+      <ul>
+        {postData.map(
+          ({
+            node: {
+              frontmatter: { date, icon, tags, title },
+              id,
+              fileAbsolutePath
+            }
+          }) => {
+            return (
+              <li key={id}>
+                <Link
+                  to={`/blog/${
+                    fileAbsolutePath.split(`/`)[
+                      fileAbsolutePath.split(`/`).length - 1
+                    ]
+                  }`}
+                >
+                  <img src={`images/post-icons/${icon}`} alt="" />
+                  <h2>{title}</h2>
+                  <span>{date}</span>
+                  <span>{tags.map(tag => `#${tag}`).join(" ")}</span>
+                </Link>
+              </li>
+            );
+          }
+        )}
+      </ul>
     </section>
   );
 };
 
 const IndexPage = ({ data }) => {
   const bodyStyles = css`
-    width: 90vw;
+    width: 96vw;
     max-width: 960px;
     margin: 0 auto;
   `;
@@ -103,7 +188,7 @@ const IndexPage = ({ data }) => {
       <IntroSection></IntroSection>
       <SectionBreak></SectionBreak>
       <RecentArticlesSection
-        postData={data.recentArticlesSection}
+        postData={data.recentArticlesSection.edges}
       ></RecentArticlesSection>
     </main>
   );
@@ -113,17 +198,18 @@ export const query = graphql`
   {
     recentArticlesSection: allMarkdownRemark(
       limit: 10
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {
         node {
           frontmatter {
-            categories
+            date(fromNow: true)
             title
-            publishDate: date(fromNow: true)
-            date: date(formatString: "YYYYMMDD")
+            icon
+            tags
           }
-          timeToRead
+          id
+          fileAbsolutePath
         }
       }
     }

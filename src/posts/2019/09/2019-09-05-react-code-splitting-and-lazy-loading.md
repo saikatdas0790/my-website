@@ -1,9 +1,15 @@
 ---
 title: 'React: Code Splitting and Lazy Loading'
 author: Saikat Das
-tags: 'react,reactjs,codesplitting,lazyloading,router,reachrouter'
-categories: 'programming,react'
+tags:
+  - react
+  - reactjs
+  - codesplitting
+  - lazyloading
+  - router
+  - reachrouter
 date: '2019-09-05'
+icon: "react.svg"
 ---
 
 ## Why do we need to split code and lazy load it?

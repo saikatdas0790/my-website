@@ -1,10 +1,13 @@
 ---
-title: 'React Hooks: An Overview'
+title: "React Hooks: An Overview"
 author: Saikat Das
-tags: 'react,reactjs,hooks'
-categories: 'programming,react'
+tags:
+  - react
+  - reactjs
+  - hooks
 featuredImage: https://storage.googleapis.com/saikat.dev/blog/assets/2019/08/React%20Hooks%20-%20An%20Overview.jpg
-date: '2019-08-28'
+icon: "react.svg"
+date: "2019-08-28"
 ---
 
 This is an overview on what React Hooks are and how to get started using them. This is going to be a multipart series on the common React Hooks and how to use them.
