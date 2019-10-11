@@ -3,10 +3,12 @@ import Header from "./header";
 import Footer from "./footer";
 import "typeface-muli";
 import "typeface-permanent-marker";
+import SEO from "./seo";
 
 const Layout = ({ children }) => {
   return (
     <>
+      <SEO></SEO>
       <Header></Header>
       {children}
       <Footer></Footer>

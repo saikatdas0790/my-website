@@ -119,11 +119,11 @@ const RecentArticlesSection = ({ postData }) => {
           }
           > span:nth-of-type(1) {
             grid-area: date;
-            opacity: 0.5;
+            opacity: 0.6;
           }
           > span:nth-of-type(2) {
             grid-area: tags;
-            opacity: 0.5;
+            opacity: 0.6;
           }
           @media (max-width: 768px) {
             grid-template-columns: max-content 1fr;
