@@ -5,52 +5,33 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch (Production)",
+      "name": "Gatsby develop",
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
       "program": "${workspaceRoot}/node_modules/gatsby/dist/bin/gatsby",
-      "args": [
-        "build"
-      ],
+      "args": ["develop"],
       "stopOnEntry": false,
-      "cwd": "${workspaceRoot}",
-      "preLaunchTask": null,
-      "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy"
-      ],
-      "env": {
-        "NODE_ENV": "development",
-        "DEBUG": "gatsby:*"
-      },
-      "console": "integratedTerminal",
-      "sourceMaps": false,
-      "outFiles": []
+      "runtimeArgs": ["--nolazy"],
+      "sourceMaps": false
     },
     {
-      "name": "Launch (Develop)",
+      "name": "Gatsby build",
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
       "program": "${workspaceRoot}/node_modules/gatsby/dist/bin/gatsby",
-      "args": [
-        "develop"
-      ],
+      "args": ["build"],
       "stopOnEntry": false,
-      "cwd": "${workspaceRoot}",
-      "preLaunchTask": null,
-      "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy"
-      ],
-      "env": {
-        "NODE_ENV": "development",
-        "DEBUG": "gatsby:*"
-      },
-      "console": "integratedTerminal",
-      "sourceMaps": false,
-      "outFiles": []
+      "runtimeArgs": ["--nolazy"],
+      "sourceMaps": false
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

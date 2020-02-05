@@ -1,4 +1,7 @@
 import React from "react";
+import { graphql, Link } from "gatsby";
+import { css } from "@emotion/core";
+import Layout from "../components/layout";
 import hiEmoji from "../images/emoji/hi.gif";
 import indiaIcon from "../images/emoji/india.svg";
 import computerIcon from "../images/emoji/computer.svg";
@@ -7,8 +10,6 @@ import githubIcon from "../images/emoji/github.svg";
 import linkedinIcon from "../images/emoji/linkedin.svg";
 import sectionBreak from "../images/section-break.svg";
 import gmailIcon from "../images/emoji/gmail.svg";
-import { graphql, Link } from "gatsby";
-import { css } from "@emotion/core";
 
 const Emoji = ({ label, src }) => (
   <span role="img" aria-label={label}>
@@ -184,13 +185,15 @@ const IndexPage = ({ data }) => {
   `;
 
   return (
-    <main css={bodyStyles}>
-      <IntroSection></IntroSection>
-      <SectionBreak></SectionBreak>
-      <RecentArticlesSection
-        postData={data.recentArticlesSection.edges}
-      ></RecentArticlesSection>
-    </main>
+    <Layout pageName="Home">
+      <main css={bodyStyles}>
+        <IntroSection></IntroSection>
+        <SectionBreak></SectionBreak>
+        <RecentArticlesSection
+          postData={data.recentArticlesSection.edges}
+        ></RecentArticlesSection>
+      </main>
+    </Layout>
   );
 };
 
