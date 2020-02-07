@@ -5,10 +5,10 @@ import "typeface-muli";
 import "typeface-permanent-marker";
 import SEO from "./seo";
 
-const Layout = ({ children, pageName = "" }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <SEO pageName={pageName}></SEO>
+      <SEO></SEO>
       <Header></Header>
       {children}
       <Footer></Footer>

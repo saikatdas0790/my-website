@@ -6,10 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
@@ -19,7 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-    `
+    `,
   );
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
@@ -28,7 +25,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // ...
   // Create blog-list pages
   const posts = result.data.allMarkdownRemark.edges;
-  const postsPerPage = 6;
+  const postsPerPage = 10;
   const numPages = Math.ceil(posts.length / postsPerPage);
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
@@ -38,8 +35,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
-      }
+        currentPage: i + 1,
+      },
     });
   });
 };
@@ -51,7 +48,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value
+      value,
     });
   }
 };

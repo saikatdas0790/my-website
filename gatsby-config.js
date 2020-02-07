@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Saikat's Website`,
     description: `This is my corner on the interwebs where I write about my exploits. It will feature things I'm learning about and projects I've built`,
-    author: `Saikat Das`
+    author: `Saikat Das`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,15 +10,15 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
+        path: `${__dirname}/src/images`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
-        path: `${__dirname}/src/posts`
-      }
+        path: `${__dirname}/src/posts`,
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -31,30 +31,44 @@ module.exports = {
         background_color: `#5DD9C1`,
         theme_color: `#5DD9C1`,
         display: `minimal-ui`,
-        icon: `src/images/icon.svg` // This path is relative to the root of the site.
-      }
+        icon: `src/images/icon.svg`, // This path is relative to the root of the site.
+      },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true
-      }
+        omitGoogleFont: true,
+      },
     },
     {
       resolve: `gatsby-plugin-emotion`,
       options: {
         env: {
           production: {
-            plugins: ["emotion"]
+            plugins: ["emotion"],
           },
           development: {
-            plugins: [["emotion", { sourceMap: true }]]
-          }
-        }
-      }
+            plugins: [["emotion", { sourceMap: true }]],
+          },
+        },
+      },
     },
-    `gatsby-transformer-remark`
-  ]
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          components: `src/components`,
+        },
+      },
+    },
+  ],
 };

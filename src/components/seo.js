@@ -8,9 +8,9 @@ function SEO({ description, lang, meta, title, pageName }) {
       siteMetadata: {
         title: defaultTitle,
         description: defaultDescription,
-        author: defaultAuthor
-      }
-    }
+        author: defaultAuthor,
+      },
+    },
   } = useStaticQuery(
     graphql`
       query {
@@ -22,7 +22,7 @@ function SEO({ description, lang, meta, title, pageName }) {
           }
         }
       }
-    `
+    `,
   );
 
   const metaDescription = description || defaultDescription;
@@ -30,43 +30,43 @@ function SEO({ description, lang, meta, title, pageName }) {
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
       title={title || defaultTitle}
       titleTemplate={pageName && `%s | ${pageName}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title || defaultTitle
+          content: title || defaultTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:type`,
-          content: `website`
+          content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`
+          content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: defaultAuthor
+          content: defaultAuthor,
         },
         {
           name: `twitter:title`,
-          content: title || defaultTitle
+          content: title || defaultTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription
-        }
+          content: metaDescription,
+        },
       ].concat(meta)}
     />
   );
@@ -75,7 +75,7 @@ function SEO({ description, lang, meta, title, pageName }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``
+  description: ``,
 };
 
 export default SEO;
