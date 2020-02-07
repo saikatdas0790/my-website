@@ -29,6 +29,7 @@ const Header = () => {
       : ""}
 
     position: fixed;
+    top: 0;
     z-index: 1;
     width: 100%;
     font-family: "Permanent Marker";
@@ -40,9 +41,13 @@ const Header = () => {
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
-      > a > img {
-        width: 2rem;
-        margin-left: 2rem;
+      > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > img {
+          width: 2rem;
+        }
       }
       > ul {
         flex-grow: 1;

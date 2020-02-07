@@ -1,4 +1,6 @@
 import React from "react";
+import { graphql, Link } from "gatsby";
+import { css } from "@emotion/core";
 import hiEmoji from "../images/emoji/hi.gif";
 import indiaIcon from "../images/emoji/india.svg";
 import computerIcon from "../images/emoji/computer.svg";
@@ -7,8 +9,7 @@ import githubIcon from "../images/emoji/github.svg";
 import linkedinIcon from "../images/emoji/linkedin.svg";
 import sectionBreak from "../images/section-break.svg";
 import gmailIcon from "../images/emoji/gmail.svg";
-import { graphql, Link } from "gatsby";
-import { css } from "@emotion/core";
+import SEO from "../components/seo";
 
 const Emoji = ({ label, src }) => (
   <span role="img" aria-label={label}>
@@ -88,59 +89,59 @@ const IntroSection = () => {
   );
 };
 
-const RecentArticlesSection = ({ postData }) => {
-  const recentArticlesSectionStyles = css`
-    > h1 {
-      margin: 2rem 0;
-      text-align: center;
-    }
-    > ul {
-      list-style: none;
-      > li {
-        padding: 1rem 0;
-        transition: box-shadow 0.25s ease;
-        > a {
-          text-decoration: none;
-          display: grid;
-          grid-template-columns: 2fr 7fr 3fr;
+const recentArticlesSectionStyles = css`
+  > h1 {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  > ul {
+    list-style: none;
+    > li {
+      padding: 1rem 0;
+      transition: box-shadow 0.25s ease;
+      > a {
+        text-decoration: none;
+        display: grid;
+        grid-template-columns: 2fr 7fr 3fr;
+        grid-template-areas:
+          "icon title tags"
+          "icon date tags";
+        align-items: center;
+        color: black;
+        > img {
+          grid-area: icon;
+          justify-self: center;
+          margin: 0.5rem;
+        }
+        > h2 {
+          font-family: "Muli";
+          grid-area: title;
+        }
+        > span:nth-of-type(1) {
+          grid-area: date;
+          opacity: 0.6;
+        }
+        > span:nth-of-type(2) {
+          grid-area: tags;
+          opacity: 0.6;
+        }
+        @media (max-width: 768px) {
+          grid-template-columns: max-content 1fr;
           grid-template-areas:
-            "icon title tags"
-            "icon date tags";
-          align-items: center;
-          color: black;
-          > img {
-            grid-area: icon;
-            justify-self: center;
-            margin: 0.5rem;
-          }
-          > h2 {
-            font-family: "Muli";
-            grid-area: title;
-          }
-          > span:nth-of-type(1) {
-            grid-area: date;
-            opacity: 0.5;
-          }
-          > span:nth-of-type(2) {
-            grid-area: tags;
-            opacity: 0.5;
-          }
-          @media (max-width: 768px) {
-            grid-template-columns: max-content 1fr;
-            grid-template-areas:
-              "icon title"
-              "icon date"
-              "icon tags";
-          }
+            "icon title"
+            "icon date"
+            "icon tags";
         }
       }
-      > li:hover,
-      > li:active {
-        box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.2),
-          0 1px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
-      }
     }
-  `;
+    > li:hover,
+    > li:active {
+      box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.2),
+        0 1px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+    }
+  }
+`;
+const RecentArticlesSection = ({ postData }) => {
   return (
     <section css={recentArticlesSectionStyles}>
       <h1>Recent Articles</h1>
@@ -150,26 +151,23 @@ const RecentArticlesSection = ({ postData }) => {
             node: {
               frontmatter: { date, icon, tags, title },
               id,
-              fileAbsolutePath
-            }
+              fields: { slug },
+            },
           }) => {
             return (
               <li key={id}>
-                <Link
-                  to={`/blog/${
-                    fileAbsolutePath.split(`/`)[
-                      fileAbsolutePath.split(`/`).length - 1
-                    ]
-                  }`}
-                >
-                  <img src={`images/post-icons/${icon}`} alt="" />
+                <Link to={`/blog/posts/${slug}`}>
+                  <img
+                    src={`/images/post-icons/${icon}`}
+                    alt={`${icon} icon`}
+                  />
                   <h2>{title}</h2>
                   <span>{date}</span>
                   <span>{tags.map(tag => `#${tag}`).join(" ")}</span>
                 </Link>
               </li>
             );
-          }
+          },
         )}
       </ul>
     </section>
@@ -185,6 +183,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <main css={bodyStyles}>
+      <SEO pageName="Home"></SEO>
       <IntroSection></IntroSection>
       <SectionBreak></SectionBreak>
       <RecentArticlesSection
@@ -202,6 +201,9 @@ export const query = graphql`
     ) {
       edges {
         node {
+          fields {
+            slug
+          }
           frontmatter {
             date(fromNow: true)
             title
@@ -209,7 +211,6 @@ export const query = graphql`
             tags
           }
           id
-          fileAbsolutePath
         }
       }
     }

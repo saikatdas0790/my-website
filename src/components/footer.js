@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { css } from "@emotion/core";
 
 const footerStyles = css`
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   ul {
     display: flex;
     list-style: none;

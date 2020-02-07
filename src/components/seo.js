@@ -2,8 +2,16 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function SEO({ description, lang, meta, title, pageName }) {
+  const {
+    site: {
+      siteMetadata: {
+        title: defaultTitle,
+        description: defaultDescription,
+        author: defaultAuthor,
+      },
+    },
+  } = useStaticQuery(
     graphql`
       query {
         site {
@@ -14,51 +22,51 @@ function SEO({ description, lang, meta, title }) {
           }
         }
       }
-    `
+    `,
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description || defaultDescription;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={title || defaultTitle}
+      titleTemplate={pageName && `%s | ${pageName}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:title`,
-          content: title
+          content: title || defaultTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription
+          content: metaDescription,
         },
         {
           property: `og:type`,
-          content: `website`
+          content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`
+          content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author
+          content: defaultAuthor,
         },
         {
           name: `twitter:title`,
-          content: title
+          content: title || defaultTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription
-        }
+          content: metaDescription,
+        },
       ].concat(meta)}
     />
   );
@@ -67,7 +75,7 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``
+  description: ``,
 };
 
 export default SEO;
