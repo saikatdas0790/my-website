@@ -109,9 +109,11 @@ const recentArticlesSectionStyles = css`
         align-items: center;
         color: black;
         > img {
+          width: 4rem;
+          height: 4rem;
           grid-area: icon;
           justify-self: center;
-          margin: 0.5rem;
+          margin-right: 1rem;
         }
         > h2 {
           font-family: "Muli";
@@ -179,6 +181,7 @@ const IndexPage = ({ data }) => {
     width: 96vw;
     max-width: 960px;
     margin: 0 auto;
+    padding: 0 1rem;
   `;
 
   return (
