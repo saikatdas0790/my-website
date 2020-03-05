@@ -42,13 +42,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-emotion`,
       options: {
         env: {
@@ -70,5 +63,6 @@ module.exports = {
         },
       },
     },
+    "gatsby-plugin-theme-ui",
   ],
 };

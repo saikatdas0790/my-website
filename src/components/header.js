@@ -32,7 +32,6 @@ const Header = () => {
     top: 0;
     z-index: 1;
     width: 100%;
-    font-family: "Permanent Marker";
     margin: 0;
     > nav {
       width: 90vw;

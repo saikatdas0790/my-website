@@ -26,7 +26,6 @@ const postListStyles = css`
         margin-right: 1rem;
       }
       > h2 {
-        font-family: "Muli";
         grid-area: title;
       }
       > span:nth-of-type(1) {
@@ -73,7 +72,7 @@ const PostList = ({ postListData }) => {
         }) => {
           return (
             <li key={id}>
-              <Link to={`/blog/posts/${slug}`}>
+              <Link to={slug}>
                 <img src={`/images/post-icons/${icon}`} alt={`${icon} icon`} />
                 <h2>{title}</h2>
                 <span>{date}</span>

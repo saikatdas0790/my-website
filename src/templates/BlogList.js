@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import SEO from "../components/seo";
 import PostList from "../components/blog/PostList";
@@ -51,9 +51,7 @@ const blogPageListStyles = css`
   }
 `;
 
-const BlogList = ({ data, pageContext, path }) => {
-  const posts = data.allMarkdownRemark.edges;
-
+const BlogList = ({ pageContext }) => {
   return (
     <>
       <main css={blogPageListStyles}>
@@ -62,37 +60,11 @@ const BlogList = ({ data, pageContext, path }) => {
           description="Blog posts on personal experiences and learnings"
         ></SEO>
         <h1>Most Recent Posts</h1>
-        <PostList postListData={posts}></PostList>
+        <PostList postListData={pageContext.posts}></PostList>
         <Pagination pageContext={pageContext}></Pagination>
       </main>
     </>
   );
 };
-
-export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            date(fromNow: true)
-            title
-            icon
-            tags
-          }
-          id
-          excerpt
-        }
-      }
-    }
-  }
-`;
 
 export default BlogList;
