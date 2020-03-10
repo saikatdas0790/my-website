@@ -1,26 +1,26 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { Link } from "gatsby";
-import { css } from "@emotion/core";
 
-const footerStyles = css`
-  margin: 1rem 0;
-  ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    li {
-      padding: 0 0.5rem;
-      a {
-        text-decoration: none;
-        color: #9aaab4;
-        font-size: 0.75 rem;
-      }
-    }
-  }
-`;
+const footerStyles = {
+  margin: "1rem 0",
+  ul: {
+    display: "flex",
+    listStyle: "none",
+    justifyContent: "center",
+    li: {
+      padding: "0 0.5rem",
+      a: {
+        textDecoration: "none",
+        color: "secondary",
+        fontSize: "0.75rem",
+      },
+    },
+  },
+};
 
 const Footer = () => (
-  <footer css={footerStyles}>
+  <footer sx={footerStyles}>
     <nav>
       <ul>
         <li>

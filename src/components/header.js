@@ -1,9 +1,14 @@
+/** @jsx jsx */
+import { jsx, IconButton, useColorMode } from "theme-ui";
+import { useEffect, useState } from "react";
 import { Link } from "gatsby";
-import React, { useEffect, useState } from "react";
-import Icon from "../images/icon-bordered.svg";
-import { css } from "@emotion/core";
+import { Icon } from "@iconify/react";
+import newMoonFace from "@iconify/icons-noto/new-moon-face";
+import fullMoonFace from "@iconify/icons-noto/full-moon-face";
+import BrandIcon from "../images/icon-bordered.svg";
 
 const Header = () => {
+  const [colorMode, setColorMode] = useColorMode();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,63 +22,71 @@ const Header = () => {
     };
   }, []);
 
-  const headerStyles = css`
-    background: linear-gradient(90deg, #5dd9c1 0%, #fbbebe 100%);
-    transition: padding 0.5s ease, box-shadow 0.5s ease;
-    padding: 0.25rem 0;
-    ${isScrolled
-      ? `
-          box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
-          padding: 0 0;
-    `
-      : ""}
-
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    margin: 0;
-    > nav {
-      width: 90vw;
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      > a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        > img {
-          width: 2rem;
-        }
-      }
-      > ul {
-        flex-grow: 1;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        list-style: none;
-        > li {
-          margin-right: 2rem;
-          > a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-          }
-          > a:hover {
-            text-decoration: wavy underline;
-          }
-        }
-      }
-    }
-  `;
+  const headerStyles = {
+    background: theme => theme.colors.backgroundGradient,
+    transition: "padding 0.5s ease, box-shadow 0.5s ease",
+    padding: isScrolled ? "0 0" : "0.25rem 0",
+    boxShadow: isScrolled ? "0px 2px 16px rgba(0, 0, 0, 0.25)" : "",
+    position: "fixed",
+    top: 0,
+    zIndex: 1,
+    width: "100%",
+    margin: 0,
+    display: "flex",
+    "> nav": {
+      width: "90%",
+      maxWidth: "960px",
+      margin: "0 auto",
+      display: "flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      "> a": {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        "> img": {
+          width: "2rem",
+        },
+      },
+      "> ul": {
+        flexGrow: 1,
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "flex-end",
+        listStyle: "none",
+        margin: "0.5rem 0",
+        "> li": {
+          marginRight: "1rem",
+          "> a": {
+            fontFamily: "heading",
+            textDecoration: "none",
+            color: "text",
+            fontSize: "1.5rem",
+            ":hover": {
+              textDecoration: "wavy underline",
+            },
+          },
+        },
+      },
+      "> button": {
+        width: "auto",
+        height: "auto",
+        marginLeft: "auto",
+        cursor: "pointer",
+        "> svg": {
+          width: "2rem",
+          height: "2rem",
+        },
+      },
+    },
+  };
 
   return (
-    <header css={headerStyles}>
+    <header sx={headerStyles}>
       <nav>
         <Link to="/">
-          <img src={Icon} alt="Homepage" />
+          <img src={BrandIcon} alt="Homepage" />
         </Link>
         <ul>
           <li>
@@ -83,6 +96,18 @@ const Header = () => {
             <Link to="/projects">Showcase</Link>
           </li>
         </ul>
+        <IconButton
+          aria-label="Toggle dark mode"
+          onClick={() =>
+            setColorMode(colorMode === "default" ? "dark" : "default")
+          }
+        >
+          {colorMode === "default" ? (
+            <Icon icon={newMoonFace} />
+          ) : (
+            <Icon icon={fullMoonFace} />
+          )}
+        </IconButton>
       </nav>
     </header>
   );

@@ -1,21 +1,22 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import React from "react";
 import { Link } from "gatsby";
-import { css } from "@emotion/core";
 import SEO from "../components/seo";
 import PostList from "../components/blog/PostList";
 
-const paginationStyles = css`
-  padding: 1rem 0;
-  position: relative;
-  > .previous {
-    position: absolute;
-    left: 0;
-  }
-  > .next {
-    position: absolute;
-    right: 0;
-  }
-`;
+const paginationStyles = {
+  padding: "1rem 0",
+  position: "relative",
+  "> .previous": {
+    position: "absolute",
+    left: 0,
+  },
+  "> .next": {
+    position: "absolute",
+    right: 0,
+  },
+};
 
 const Pagination = ({ pageContext }) => {
   const { currentPage, numPages } = pageContext;
@@ -27,7 +28,7 @@ const Pagination = ({ pageContext }) => {
   const nextPage = `/blog/${(currentPage + 1).toString()}`;
 
   return numPages < 2 ? null : (
-    <section css={paginationStyles}>
+    <section sx={paginationStyles}>
       {!isFirst && (
         <Link to={prevPage} rel="prev" className="previous">
           ← Previous Page
@@ -42,19 +43,19 @@ const Pagination = ({ pageContext }) => {
   );
 };
 
-const blogPageListStyles = css`
-  max-width: 960px;
-  margin: 4rem auto 2rem auto;
-  > h1 {
-    margin: 2rem 0;
-    text-align: center;
-  }
-`;
+const blogPageListStyles = {
+  maxWidth: "960px",
+  margin: "4rem auto 2rem auto",
+  "> h1": {
+    margin: "2rem 0",
+    textAlign: "center",
+  },
+};
 
 const BlogList = ({ pageContext }) => {
   return (
     <>
-      <main css={blogPageListStyles}>
+      <main sx={blogPageListStyles}>
         <SEO
           pageName="Blog"
           description="Blog posts on personal experiences and learnings"

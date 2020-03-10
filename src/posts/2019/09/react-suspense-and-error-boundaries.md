@@ -1,12 +1,12 @@
 ---
-title: 'React: Suspense and Error Boundaries'
+title: "React: Suspense and Error Boundaries"
 author: Saikat Das
 tags:
   - react
   - reactjs
   - suspense
   - errorhandling
-date: '2019-09-06'
+date: "2019-09-06"
 icon: "react.svg"
 ---
 
@@ -20,7 +20,7 @@ Suspense in React is an API to render conditional UI. It lets you render a parti
 To understand the API for React Suspense, we'll look at a simple Suspense in an example
 
 ```javascript
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const OtherComponent = React.lazy(() => import("./OtherComponent"));
 
 function MyComponent() {
   return (
@@ -32,6 +32,7 @@ function MyComponent() {
   );
 }
 ```
+
 Here, we are wrapping a lazily loaded component with a `Suspense` and displaying a `fallback` till the time it's not loaded. Naturally, a `Suspense` only makes sense for lazily loaded components, as statically loaded components would already be available on page load.
 
 That's it for React Suspense. What do you think of this newer succinct API for conditionally rendering components? Do you prefer the older way of using higher-order components? Let me know in the comments.

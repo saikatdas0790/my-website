@@ -1,22 +1,42 @@
-import React from "react";
-import { Link } from "gatsby";
-import { css } from "@emotion/core";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import SEO from "../components/seo";
+
+const postStyles = {
+  maxWidth: "960px",
+  margin: "4rem auto 2rem auto",
+  "> pre": {
+    padding: "1rem",
+  },
+  code: {
+    backgroundColor: "highlight",
+  },
+  img: {
+    display: "block",
+    margin: "1rem auto",
+  },
+  "> blockquote": {
+    "> p": {
+      fontStyle: "italic",
+    },
+  },
+};
 
 const BlogPost = ({
   pageContext: {
     node: {
       frontmatter: { title },
       timeToRead,
-      html,
+      body,
+      excerpt,
     },
   },
 }) => {
-  console.log(title);
   return (
-    <main>
-      <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: html }}></article>
+    <main sx={postStyles}>
+      <SEO title={title} description={excerpt}></SEO>
+      <MDXRenderer>{body}</MDXRenderer>
     </main>
   );
 };

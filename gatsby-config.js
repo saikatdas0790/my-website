@@ -42,20 +42,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-emotion`,
-      options: {
-        env: {
-          production: {
-            plugins: ["emotion"],
-          },
-          development: {
-            plugins: [["emotion", { sourceMap: true }]],
-          },
-        },
-      },
-    },
-    `gatsby-transformer-remark`,
-    {
       resolve: `gatsby-alias-imports`,
       options: {
         aliases: {
@@ -64,5 +50,11 @@ module.exports = {
       },
     },
     "gatsby-plugin-theme-ui",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+      },
+    },
   ],
 };

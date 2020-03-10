@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import { graphql } from "gatsby";
 import { css } from "@emotion/core";
 import hiEmoji from "../images/emoji/hi.gif";
@@ -18,37 +19,40 @@ const Emoji = ({ label, src }) => (
   </span>
 );
 
+const sectionBreakStyles = {
+  display: "flex",
+  justifyContent: "space-around",
+  img: {
+    maxWidth: "90vw",
+  },
+};
 const SectionBreak = () => {
-  const style = css`
-    display: flex;
-    justify-content: space-around;
-    img {
-      max-width: 90vw;
-    }
-  `;
   return (
-    <span css={style}>
+    <span sx={sectionBreakStyles}>
       <img src={sectionBreak} alt="section break" />
     </span>
   );
 };
 
+const introSectionStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-around",
+  padding: "5rem 0",
+  p: {
+    fontSize: "1.5rem",
+    textAlign: "center",
+    span: {
+      img: {
+        width: "1.5rem",
+      },
+    },
+  },
+};
+
 const IntroSection = () => {
-  const introSectionStyles = css`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5rem 0;
-    p {
-      span {
-        img {
-          width: 1.5rem;
-        }
-      }
-    }
-  `;
   return (
-    <section css={introSectionStyles}>
+    <section sx={introSectionStyles}>
       <p>
         <Emoji label="Hi" src={hiEmoji}></Emoji>, I'm Saikat!
         <br />
@@ -90,32 +94,32 @@ const IntroSection = () => {
   );
 };
 
-const recentArticlesSectionStyles = css`
-  > h1 {
-    margin: 2rem 0;
-    text-align: center;
-  }
-`;
+const recentArticlesSectionStyles = {
+  "> h1": {
+    margin: "2rem 0",
+    textAlign: "center",
+  },
+};
 
 const RecentArticlesSection = ({ postData }) => {
   return (
-    <section css={recentArticlesSectionStyles}>
+    <section sx={recentArticlesSectionStyles}>
       <h1>Recent Articles</h1>
       <PostList postListData={postData}></PostList>
     </section>
   );
 };
 
-const IndexPage = ({ data }) => {
-  const bodyStyles = css`
-    width: 96vw;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  `;
+const bodyStyles = {
+  width: "96vw",
+  maxWidth: "960px",
+  margin: "0 auto",
+  padding: "0 1rem",
+};
 
+const IndexPage = ({ data }) => {
   return (
-    <main css={bodyStyles}>
+    <main sx={bodyStyles}>
       <SEO pageName="Home"></SEO>
       <IntroSection></IntroSection>
       <SectionBreak></SectionBreak>
@@ -128,7 +132,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    recentArticlesSection: allMarkdownRemark(
+    recentArticlesSection: allMdx(
       limit: 10
       sort: { order: DESC, fields: frontmatter___date }
     ) {

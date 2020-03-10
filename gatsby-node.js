@@ -4,7 +4,7 @@ const { createFilePath } = require("gatsby-source-filesystem");
 const onCreateNode = ({ node, actions, getNode }) => {
   // * Creating slugs for the markdown files
   const { createNodeField } = actions;
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = `/blog/posts${createFilePath({
       node,
       getNode,
@@ -24,7 +24,7 @@ const createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
@@ -32,7 +32,7 @@ const createPages = async ({ graphql, actions, reporter }) => {
               }
               frontmatter {
                 author
-                date(fromNow: false)
+                date(fromNow: true)
                 featuredImage
                 icon
                 tags
@@ -40,7 +40,7 @@ const createPages = async ({ graphql, actions, reporter }) => {
               }
               timeToRead
               id
-              html
+              body
               excerpt
             }
           }
@@ -53,7 +53,7 @@ const createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMdx.edges;
   const postsPerPage = 10;
   const numPages = Math.ceil(posts.length / postsPerPage);
 
