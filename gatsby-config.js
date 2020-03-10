@@ -42,32 +42,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-emotion`,
-      options: {
-        env: {
-          production: {
-            plugins: ["emotion"],
-          },
-          development: {
-            plugins: [["emotion", { sourceMap: true }]],
-          },
-        },
-      },
-    },
-    `gatsby-transformer-remark`,
-    {
       resolve: `gatsby-alias-imports`,
       options: {
         aliases: {
           components: `src/components`,
         },
+      },
+    },
+    "gatsby-plugin-theme-ui",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
       },
     },
   ],

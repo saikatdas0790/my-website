@@ -1,5 +1,6 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import { graphql } from "gatsby";
 import { css } from "@emotion/core";
 import hiEmoji from "../images/emoji/hi.gif";
 import indiaIcon from "../images/emoji/india.svg";
@@ -10,6 +11,7 @@ import linkedinIcon from "../images/emoji/linkedin.svg";
 import sectionBreak from "../images/section-break.svg";
 import gmailIcon from "../images/emoji/gmail.svg";
 import SEO from "../components/seo";
+import PostList from "../components/blog/PostList";
 
 const Emoji = ({ label, src }) => (
   <span role="img" aria-label={label}>
@@ -17,37 +19,40 @@ const Emoji = ({ label, src }) => (
   </span>
 );
 
+const sectionBreakStyles = {
+  display: "flex",
+  justifyContent: "space-around",
+  img: {
+    maxWidth: "90vw",
+  },
+};
 const SectionBreak = () => {
-  const style = css`
-    display: flex;
-    justify-content: space-around;
-    img {
-      max-width: 90vw;
-    }
-  `;
   return (
-    <span css={style}>
+    <span sx={sectionBreakStyles}>
       <img src={sectionBreak} alt="section break" />
     </span>
   );
 };
 
+const introSectionStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-around",
+  padding: "5rem 0",
+  p: {
+    fontSize: "1.5rem",
+    textAlign: "center",
+    span: {
+      img: {
+        width: "1.5rem",
+      },
+    },
+  },
+};
+
 const IntroSection = () => {
-  const introSectionStyles = css`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5rem 0;
-    p {
-      span {
-        img {
-          width: 1.5rem;
-        }
-      }
-    }
-  `;
   return (
-    <section css={introSectionStyles}>
+    <section sx={introSectionStyles}>
       <p>
         <Emoji label="Hi" src={hiEmoji}></Emoji>, I'm Saikat!
         <br />
@@ -89,100 +94,32 @@ const IntroSection = () => {
   );
 };
 
-const recentArticlesSectionStyles = css`
-  > h1 {
-    margin: 2rem 0;
-    text-align: center;
-  }
-  > ul {
-    list-style: none;
-    > li {
-      padding: 1rem 0;
-      transition: box-shadow 0.25s ease;
-      > a {
-        text-decoration: none;
-        display: grid;
-        grid-template-columns: 2fr 7fr 3fr;
-        grid-template-areas:
-          "icon title tags"
-          "icon date tags";
-        align-items: center;
-        color: black;
-        > img {
-          grid-area: icon;
-          justify-self: center;
-          margin: 0.5rem;
-        }
-        > h2 {
-          font-family: "Muli";
-          grid-area: title;
-        }
-        > span:nth-of-type(1) {
-          grid-area: date;
-          opacity: 0.6;
-        }
-        > span:nth-of-type(2) {
-          grid-area: tags;
-          opacity: 0.6;
-        }
-        @media (max-width: 768px) {
-          grid-template-columns: max-content 1fr;
-          grid-template-areas:
-            "icon title"
-            "icon date"
-            "icon tags";
-        }
-      }
-    }
-    > li:hover,
-    > li:active {
-      box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.2),
-        0 1px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
-    }
-  }
-`;
+const recentArticlesSectionStyles = {
+  "> h1": {
+    margin: "2rem 0",
+    textAlign: "center",
+  },
+};
+
 const RecentArticlesSection = ({ postData }) => {
   return (
-    <section css={recentArticlesSectionStyles}>
+    <section sx={recentArticlesSectionStyles}>
       <h1>Recent Articles</h1>
-      <ul>
-        {postData.map(
-          ({
-            node: {
-              frontmatter: { date, icon, tags, title },
-              id,
-              fields: { slug },
-            },
-          }) => {
-            return (
-              <li key={id}>
-                <Link to={`/blog/posts/${slug}`}>
-                  <img
-                    src={`/images/post-icons/${icon}`}
-                    alt={`${icon} icon`}
-                  />
-                  <h2>{title}</h2>
-                  <span>{date}</span>
-                  <span>{tags.map(tag => `#${tag}`).join(" ")}</span>
-                </Link>
-              </li>
-            );
-          },
-        )}
-      </ul>
+      <PostList postListData={postData}></PostList>
     </section>
   );
 };
 
-const IndexPage = ({ data }) => {
-  const bodyStyles = css`
-    width: 96vw;
-    max-width: 960px;
-    margin: 0 auto;
-  `;
+const bodyStyles = {
+  width: "96vw",
+  maxWidth: "960px",
+  margin: "0 auto",
+  padding: "0 1rem",
+};
 
+const IndexPage = ({ data }) => {
   return (
-    <main css={bodyStyles}>
+    <main sx={bodyStyles}>
       <SEO pageName="Home"></SEO>
       <IntroSection></IntroSection>
       <SectionBreak></SectionBreak>
@@ -195,7 +132,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    recentArticlesSection: allMarkdownRemark(
+    recentArticlesSection: allMdx(
       limit: 10
       sort: { order: DESC, fields: frontmatter___date }
     ) {
@@ -211,6 +148,7 @@ export const query = graphql`
             tags
           }
           id
+          excerpt
         }
       }
     }
