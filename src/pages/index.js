@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { graphql } from "gatsby";
-import { css } from "@emotion/core";
 import hiEmoji from "../images/emoji/hi.gif";
 import indiaIcon from "../images/emoji/india.svg";
 import computerIcon from "../images/emoji/computer.svg";
@@ -114,7 +113,6 @@ const bodyStyles = {
   width: "96vw",
   maxWidth: "960px",
   margin: "0 auto",
-  padding: "0 1rem",
 };
 
 const IndexPage = ({ data }) => {
@@ -133,7 +131,7 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
   {
     recentArticlesSection: allMdx(
-      limit: 10
+      limit: 5
       sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {

@@ -5,7 +5,11 @@ import SEO from "../components/seo";
 
 const postStyles = {
   maxWidth: "960px",
-  margin: "4rem auto 2rem auto",
+  margin: "5rem auto 2rem auto",
+  padding: "0 1rem",
+  "> h1": {
+    textAlign: "center",
+  },
   "> pre": {
     padding: "1rem",
   },
@@ -17,6 +21,7 @@ const postStyles = {
     margin: "1rem auto",
   },
   "> blockquote": {
+    backgroundColor: "gray",
     "> p": {
       fontStyle: "italic",
     },

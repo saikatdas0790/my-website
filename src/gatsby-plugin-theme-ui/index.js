@@ -19,7 +19,7 @@ const theme = {
     background: "#FFFFFA",
     primary: "#5DD9C1",
     secondary: "#247B7B",
-    highlight: "#FFA69E",
+    highlight: "#FFDEDB",
     muted: "#DFF2D8",
     gray: "#DFF2D8",
     backgroundGradient: "linear-gradient(90deg, #5dd9c1 0%, #fbbebe 100%)",

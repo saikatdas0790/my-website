@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import React from "react";
 import { Link } from "gatsby";
 import SEO from "../components/seo";
 import PostList from "../components/blog/PostList";
@@ -54,17 +53,15 @@ const blogPageListStyles = {
 
 const BlogList = ({ pageContext }) => {
   return (
-    <>
-      <main sx={blogPageListStyles}>
-        <SEO
-          pageName="Blog"
-          description="Blog posts on personal experiences and learnings"
-        ></SEO>
-        <h1>Most Recent Posts</h1>
-        <PostList postListData={pageContext.posts}></PostList>
-        <Pagination pageContext={pageContext}></Pagination>
-      </main>
-    </>
+    <main sx={blogPageListStyles}>
+      <SEO
+        pageName="Blog"
+        description="Blog posts on personal experiences and learnings"
+      ></SEO>
+      <h1>Most Recent Posts</h1>
+      <PostList postListData={pageContext.posts}></PostList>
+      <Pagination pageContext={pageContext}></Pagination>
+    </main>
   );
 };
 
