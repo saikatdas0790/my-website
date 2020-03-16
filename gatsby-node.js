@@ -63,7 +63,7 @@ const createPages = async ({ graphql, actions, reporter }) => {
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
       component: path.resolve("./src/templates/BlogList.js"),
       context: {
-        posts,
+        posts: posts.slice(i * postsPerPage, (i + 1) * postsPerPage),
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,

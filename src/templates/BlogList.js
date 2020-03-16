@@ -52,6 +52,7 @@ const blogPageListStyles = {
 };
 
 const BlogList = ({ pageContext }) => {
+  console.log(pageContext);
   return (
     <main sx={blogPageListStyles}>
       <SEO
