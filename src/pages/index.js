@@ -97,6 +97,9 @@ const recentArticlesSectionStyles = {
   "> h1": {
     margin: "2rem 0",
     textAlign: "center",
+    fontFamily: "decoration",
+    fontSize: "2.5rem",
+    fontWeight: 200,
   },
 };
 

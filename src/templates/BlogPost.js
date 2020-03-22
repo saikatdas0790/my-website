@@ -7,9 +7,6 @@ const postStyles = {
   maxWidth: "960px",
   margin: "5rem auto 2rem auto",
   padding: "0 1rem",
-  "> h1": {
-    textAlign: "center",
-  },
   "> pre": {
     padding: "1rem",
   },
@@ -26,12 +23,21 @@ const postStyles = {
       fontStyle: "italic",
     },
   },
+  "> small": {
+    display: "block",
+    textAlign: "center",
+    margin: "-1rem auto 2rem auto",
+    fontSize: "1rem",
+  },
+  "> .featured-image": {
+    width: "100%",
+  },
 };
 
 const BlogPost = ({
   pageContext: {
     node: {
-      frontmatter: { title },
+      frontmatter: { title, featuredImage },
       timeToRead,
       body,
       excerpt,
@@ -41,6 +47,16 @@ const BlogPost = ({
   return (
     <main sx={postStyles}>
       <SEO title={title} description={excerpt}></SEO>
+      <h1>{title}</h1>
+      <small>{timeToRead} minute read</small>
+      {featuredImage ? (
+        <img
+          src={featuredImage}
+          alt={`${title}`}
+          loading="lazy"
+          className="featured-image"
+        />
+      ) : null}
       <MDXRenderer>{body}</MDXRenderer>
     </main>
   );

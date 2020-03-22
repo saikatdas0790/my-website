@@ -6,7 +6,8 @@ const theme = {
   fonts: {
     ...base.fonts,
     body: `Muli, ${base.fonts.body}`,
-    heading: `"Permanent Marker", Muli, ${base.fonts.body}`,
+    heading: `Muli, ${base.fonts.body}`,
+    decoration: `"Permanent Marker", Muli, ${base.fonts.body}`,
     monospace: `"Source Code Pro", ${base.fonts.monospace}`,
   },
   fontWeights: {

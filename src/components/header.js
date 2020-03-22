@@ -59,7 +59,7 @@ const Header = () => {
         "> li": {
           marginRight: "1rem",
           "> a": {
-            fontFamily: "heading",
+            fontFamily: "decoration",
             textDecoration: "none",
             color: "text",
             fontSize: "1.5rem",
