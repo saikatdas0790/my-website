@@ -23,32 +23,36 @@ What this means is that this is a new React API to use React features such as **
 It is cleaner as Hooks are just functions that you import into your code and they can be called from your regular function components. We do not necessarily need to use class components anymore to be able to have stateful components.
 
 Let's look at the example provided on React Docs to understand what this means:
+
 ```javascript
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Example() {
   // Declare a new state variable, which we'll call "count"const [count, setCount] = useState(0);
 
   return (
-    <div><p>You clicked {count} times</p><button onClick={() => setCount(count + 1)}>
-        Click me
-      </button></div>
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
   );
 }
 ```
+
 Here, we are using the _useState_ hook to set some state for this component. The state here is a _count_ variable which holds the value of how many times the button has been clicked. The _setCount_ variable is a function, also returned by the _useState_ hook that lets us set the value for the _count_ variable.
 
 ![Mind Blown](https://media.giphy.com/media/1jnyRP4DorCh2/giphy.gif)
 
 Compare this to the excess boilerplate that was class components. Below is the same component written with ES6 classes
+
 ```javascript
-import React from 'react';
+import React from "react";
 
 class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      count: 0,
     };
   }
 
@@ -56,7 +60,7 @@ class Example extends React.Component {
     return (
       <div>
         <p>You clicked {this.state.count} times</p>
-        <button onClick  ={() => this.setState({ count: this.state.count + 1 })}>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
           Click me
         </button>
       </div>
@@ -64,6 +68,7 @@ class Example extends React.Component {
   }
 }
 ```
+
 Not only is this code longer, but it requires using _this._ Now _this_ is one of those JavaScript features that, while going through code, always makes me pause and figure out what it is referring to. And being able to completely bypass that while writing my React components just makes me happy.
 
 Also, note that React Hooks **do not** work inside classes
@@ -72,9 +77,9 @@ Also, note that React Hooks **do not** work inside classes
 
 ### Basic ones which will cater to 90% of use cases
 
--   useState
--   useEffect
--   useContext
+- useState
+- useEffect
+- useContext
 
 ### Rest of the Hooks
 

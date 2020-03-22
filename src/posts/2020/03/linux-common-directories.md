@@ -29,7 +29,7 @@ What this means is that all resources recognized by the operating system is repr
 
 The tree starts with one node known as the _root_ (`/`) node and everything else is part of the parent-child relationship under it.
 
-# Common Folders
+## Common Folders
 
 - `/` - root directory where everything begins
 - `/boot` - contains the Linux kernel, initial RAM disk image and the bootloader

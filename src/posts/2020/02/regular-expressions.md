@@ -10,23 +10,23 @@ date: "2020-02-14"
 icon: "regex.svg"
 ---
 
-# Basics
+## Basics
 
-## Tooling
+### Tooling
 
 [Regex 101](https://regex101.com/)
 
-## Syntax
+### Syntax
 
 ```
 /regex/mode;
 ```
 
-## Literal Characters
+### Literal Characters
 
 All the characters ranging from a-z, A-Z and 0-9 are considered literal. In case we want to match things exactly, we use these
 
-## Regex Modes
+### Regex Modes
 
 - /\<regex\>/g - global
 - /\<regex\>/i - case insensitive
@@ -34,9 +34,9 @@ All the characters ranging from a-z, A-Z and 0-9 are considered literal. In case
 - /\<regex\>/m - multiline
 - /\<regex\>/ - no mode
 
-# Metacharacters
+## Metacharacters
 
-## All metacharacters
+### All metacharacters
 
 ```
 \ - backslash
@@ -52,11 +52,11 @@ $ - dollar
 {} - curly braces
 ```
 
-## Escaping metacharacter
+### Escaping metacharacter
 
 Use a backslash `\` to escape metacharacters
 
-## Other Metacharacters
+### Other Metacharacters
 
 ```
 \d - matches any decimal digit (0-9)
@@ -69,11 +69,11 @@ Use a backslash `\` to escape metacharacters
 \S - matches any non white-space character
 ```
 
-## The `.` metacharacter
+### The `.` metacharacter
 
 `.` or period matches all except new line. It is also called a wild card as it will match any character.
 
-## Non Printable characters
+### Non Printable characters
 
 Use these to match non printable characters
 
@@ -87,7 +87,7 @@ Use these to match non printable characters
 
 **Note** - _Windows uses `\r\n` to terminate lines and Unix uses `\n`_
 
-# Character Set Or Character Class
+## Character Set Or Character Class
 
 A character set matches only one character out of this set
 
@@ -101,11 +101,11 @@ Eg.
 [bc]at will match bat and cat
 ```
 
-## Range
+### Range
 
 We use a hyphen inside a character class to specify a range of characters
 
-### Syntax
+#### Syntax
 
 ```
 [start-end]
@@ -115,7 +115,7 @@ We use a hyphen inside a character class to specify a range of characters
 [0-9] will match any number
 ```
 
-## Negating a character set
+### Negating a character set
 
 We use `^` also known as the caret to negate a character set
 
@@ -125,13 +125,13 @@ We use `^` also known as the caret to negate a character set
 [^a-z] - any character other than lowercase a to z
 ```
 
-## Metacharacters inside a character set
+### Metacharacters inside a character set
 
 To use metacharacters inside a character set, use the escape `\` character before it
 
-# Repetition
+## Repetition
 
-## Quantifiers
+### Quantifiers
 
 With a quantifier, we can detect how many instances of an element - a character, character set or a group - are present. They are:
 
@@ -141,7 +141,7 @@ With a quantifier, we can detect how many instances of an element - a character,
 + - matches the previous element one or more times
 ```
 
-## Limiting Repetition
+### Limiting Repetition
 
 We can control repetition with `{}`
 
@@ -151,7 +151,7 @@ We can control repetition with `{}`
 {min,max} - matches at least n times, no more than m times
 ```
 
-## Greedy and Lazy Expressions
+### Greedy and Lazy Expressions
 
 `? + *` are by default greedy. They match the previous element as many times as possible. We can also change their behaviour to match the previous element as few times as possible
 
@@ -165,9 +165,9 @@ We can also achieve the same effect by negating the closing character with the q
 Here the caret is negating the closing arrow with the plus quantifier
 ```
 
-# Start and End
+## Start and End
 
-## Anchors
+### Anchors
 
 Anchors specify a position in the string where a match must occur
 
@@ -176,14 +176,14 @@ Anchors specify a position in the string where a match must occur
 $ - match must occur at the end
 ```
 
-## Word Boundaries
+### Word Boundaries
 
 ```
 \b - match must occur on a boundary between a \w (alphanumeric) and a \W (non-alphanumeric) character
 \B - match must not occur on a \b boundary
 ```
 
-# Groups
+## Groups
 
 We use groups to apply a quantifier to the entire group or to restrict alternation to part of the regex. We can also create a numbered group and use it later. Syntax:
 
@@ -191,7 +191,7 @@ We use groups to apply a quantifier to the entire group or to restrict alternati
 (group)
 ```
 
-## Alternation
+### Alternation
 
 Alternation is done with the `|` pipe symbol. It is similar to character class in that we use it to match a single regex out of two or more
 
@@ -203,7 +203,7 @@ Alternation is done with the `|` pipe symbol. It is similar to character class i
 
 both of the above match _gray_ and _grey_
 
-## Nesting in alternation
+### Nesting in alternation
 
 We can nest sub alternates in alternates in groups. Like:
 
@@ -211,38 +211,38 @@ We can nest sub alternates in alternates in groups. Like:
 /(alt1(sub1|sub2)|alt2(sub1|sub2))/
 ```
 
-## Numbered and Non Capturing Groups
+### Numbered and Non Capturing Groups
 
 - Groups in regex get numbered and can be reference like so `\1`
 - To create a non capturing group not considered in the count, we need to add `?:` to the start of the group after the `(`
 
-# Lookaround
+## Lookaround
 
 To match if a certain _element A_ comes before or after an _element B_
 
-## Lookahead
+### Lookahead
 
-### Positive
+#### Positive
 
 ```
 elementB(?=elementA)
 ```
 
-### Negative
+#### Negative
 
 ```
 elementB(?!elementA)
 ```
 
-## Lookbehind
+### Lookbehind
 
-### Positive
+#### Positive
 
 ```
 (?<=elementA)elementB
 ```
 
-### Negative
+#### Negative
 
 ```
 (?<!elementA)elementB

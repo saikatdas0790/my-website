@@ -13,7 +13,7 @@ date: "2020-03-15"
 icon: "bash.svg"
 ---
 
-# Simple Commands
+## Simple Commands
 
 - `date` - displays the current time and date
 - `cal` - displays a calendar of the current month
@@ -21,12 +21,12 @@ icon: "bash.svg"
 - `free` - displays the amount of free memory
 - `exit` - ends a terminal session
 
-# Navigation Commands
+## Navigation Commands
 
 - `pwd` - display the current working directory
 - `cd` - change current working directory to another specified directory
 
-## Linux Path names
+### Linux Path names
 
 Linux path names can be specified in the following two ways:
 
@@ -36,13 +36,13 @@ Linux path names can be specified in the following two ways:
   - `..` - refers to the parent directory of the current directory
   - `~` - refers to the current user's home directory
 
-# Filesystem commands
+## Filesystem commands
 
 - `file` - determine file type
 - `less` - view contents of a file
 - `ls` - list files and directories in a specific directory
 
-## `ls` common arguments
+### `ls` common arguments
 
 - `-a` - lists all files
 - `-h` - display file sizes in human-readable format
@@ -50,7 +50,7 @@ Linux path names can be specified in the following two ways:
 - `-s` - sort by file size, largest first
 - `-t` - sort by modified time, newest first
 
-# Manipulating Files and Directories
+## Manipulating Files and Directories
 
 - `cp` - copy files and directories
 - `mv` - move/rename files and directories
@@ -58,7 +58,7 @@ Linux path names can be specified in the following two ways:
 - `rm` - remove files and directories
 - `ln` - create _hard_ and _symbolic_ links
 
-## `cp`, `mv` & `rm` common arguments
+### `cp`, `mv` & `rm` common arguments
 
 - `-a` - copy the files and directories and all of their attributes
 - `-i` - before overwriting an existing file, prompt the user for confirmation

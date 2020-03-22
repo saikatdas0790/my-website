@@ -26,10 +26,10 @@ ln -s file link
 
 The `-s` creates **symbolic** links and can be excluded to create **hard** links
 
-# Symbolic Links
+## Symbolic Links
 
 Symbolic links are the modern way of creating links and were created to overcome the limitations of hard links. They work by creating a special type of file that contains a text pointer to the referenced file or directory. A file pointed to by a symbolic link and the symbolic link itself are largely indistinguishable from one another. If we write something to the symbolic link, the referenced file is written to. However, if we delete a symbolic link, only the link is deleted, not the file itself
 
-# Hard Links
+## Hard Links
 
 We should use symbolic links for our purposes of shortcuts and such. Hard links are the original Unix way of creating links. By default, every file has a single hard link that gives the file its name

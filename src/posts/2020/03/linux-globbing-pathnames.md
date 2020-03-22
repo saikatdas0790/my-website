@@ -21,7 +21,7 @@ icon: "linux.svg"
 
 This is useful for us whenever we are working with multiple files and need to move, copy, delete them. We also use these patterns in other applications when specifying which files to **include** or which files to **ignore**. For example, we use these patterns in a `.gitignore` file to tell _Git_ which files to ignore
 
-# Wildcards
+## Wildcards
 
 - `*` - matches any character
 - `?` - matches any single character
@@ -33,7 +33,7 @@ This is useful for us whenever we are working with multiple files and need to mo
 
 Some common classes are listed below
 
-# Common Classes
+## Common Classes
 
 - `[:alnum:]` - matches any alphanumeric character
 - `[:alpha:]` - matches any alphabetic character
@@ -41,7 +41,7 @@ Some common classes are listed below
 - `[:lower:]` - matches any lowercase letter
 - `[:upper:]` - matches any uppercase letter
 
-# Examples
+## Examples
 
 - `*` - all files
 - `**` - all files including ones inside subfolders
