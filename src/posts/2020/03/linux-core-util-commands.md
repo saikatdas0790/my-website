@@ -57,6 +57,7 @@ Linux path names can be specified in the following two ways:
 - `mkdir` - create directories
 - `rm` - remove files and directories
 - `ln` - create _hard_ and _symbolic_ links
+- `alias` - create an alias for a command. Use `unalias` to remove an _aliased_ command
 
 ### `cp`, `mv` & `rm` common arguments
 
@@ -65,3 +66,23 @@ Linux path names can be specified in the following two ways:
 - `-r` - recursively copy directories and their contents
 - `-u` - when copying, only copy files that don't exist or are newer than the existing corresponding files in the destination directory
 - `-v` - display informative messages as the copy is performed
+
+## Getting help
+
+- `type` - indicate how a command name is interpreted
+- `which` - display which executable program will be executed
+- `help` - get help for shell builtins
+- `man` - display a command's manual page
+- `apropos` - display a list of appropriate commands
+- `info` - display a command's info entry
+- `whatis` - display one-line manual page descriptions
+
+## Parsing Text
+
+- `cat` - concatenate files to the standard output
+- `sort` - sort lines of text
+- `uniq` - report or omit repeated lines
+- `grep` - print lines matching a pattern
+- `wc` - print _newline_, _word_ and _byte counts_ for each file
+- `head` - output the first part of a file
+- `tail` - output the last part of a file

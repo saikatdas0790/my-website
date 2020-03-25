@@ -7,6 +7,9 @@ const postStyles = {
   maxWidth: "960px",
   margin: "5rem auto 2rem auto",
   padding: "0 1rem",
+  "> h1": {
+    textAlign: "center",
+  },
   "> pre": {
     padding: "1rem",
   },
