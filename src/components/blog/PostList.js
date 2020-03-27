@@ -54,7 +54,7 @@ const postListStyles = {
       "> p": {
         gridArea: "excerpt",
         fontSize: "1rem",
-        opacity: 0.8,
+        opacity: 0.9,
       },
     },
   },

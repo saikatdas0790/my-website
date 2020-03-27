@@ -19,6 +19,8 @@ icon: "bash.svg"
 - `cal` - displays a calendar of the current month
 - `df` - displays the current amount of free space on our disk drives
 - `free` - displays the amount of free memory
+- `clear` - clear the terminal screen
+- `history` - display or manipulate the history list
 - `exit` - ends a terminal session
 
 ## Navigation Commands
@@ -79,6 +81,7 @@ Linux path names can be specified in the following two ways:
 
 ## Parsing Text
 
+- `echo` - display a line of text
 - `cat` - concatenate files to the standard output
 - `sort` - sort lines of text
 - `uniq` - report or omit repeated lines
