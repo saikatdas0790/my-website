@@ -5,11 +5,16 @@ const onCreateNode = ({ node, actions, getNode }) => {
   // * Creating slugs for the markdown files
   const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = `/blog/posts${createFilePath({
+    const splitFilePathArray = createFilePath({
       node,
       getNode,
       basePath: "src/posts",
-    })}`;
+    }).split("/");
+
+    const value = `/blog/posts/${
+      splitFilePathArray[splitFilePathArray.length - 2]
+    }`;
+
     createNodeField({
       name: `slug`,
       node,

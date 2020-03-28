@@ -89,3 +89,14 @@ Linux path names can be specified in the following two ways:
 - `wc` - print _newline_, _word_ and _byte counts_ for each file
 - `head` - output the first part of a file
 - `tail` - output the last part of a file
+
+## Permissions
+
+- `id` - display user identity
+- `chmod` - change a file's mode
+- `umask` - set the default file permissions
+- `su` - run a shell as another user
+- `sudo` - execute a command as another user
+- `chown` - change a file's owner
+- `chgrp` - change a file's group ownership
+- `passwd` - change a user's password
