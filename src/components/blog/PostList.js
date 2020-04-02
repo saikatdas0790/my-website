@@ -17,6 +17,7 @@ const postListStyles = {
     "> a": {
       textDecoration: "none",
       display: "grid",
+      columnGap: "0.5rem",
       gridTemplateColumns: ["max-content 1fr", "2fr 7fr 3fr"],
       gridTemplateAreas: [
         `
@@ -77,7 +78,7 @@ const PostList = ({ postListData }) => {
               <Link to={slug}>
                 <img src={`/images/post-icons/${icon}`} alt={`${icon} icon`} />
                 <h2>{title}</h2>
-                <span>{date}</span>
+                <span>posted {date}</span>
                 <span>{tags.map(tag => `#${tag}`).join(" ")}</span>
                 <p>{excerpt}</p>
               </Link>
