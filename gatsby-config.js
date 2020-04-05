@@ -3,6 +3,7 @@ module.exports = {
     title: `Saikat's Website`,
     description: `This is my corner on the interwebs where I write about my exploits. It will feature things I'm learning about and projects I've built`,
     author: `Saikat Das`,
+    siteUrl: `https://saikat.dev`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -67,5 +68,6 @@ module.exports = {
         anonymize: false,
       },
     },
+    `gatsby-plugin-sitemap`,
   ],
 };

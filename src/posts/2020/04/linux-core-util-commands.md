@@ -9,7 +9,7 @@ tags:
   - command-line
   - shell
   - terminal
-date: "2020-03-15"
+date: "2020-04-02"
 icon: "bash.svg"
 ---
 
@@ -100,3 +100,14 @@ Linux path names can be specified in the following two ways:
 - `chown` - change a file's owner
 - `chgrp` - change a file's group ownership
 - `passwd` - change a user's password
+
+## Processes
+
+- `ps` - report a snapshot of current processes
+- `top` - display tasks
+- `jobs` - list active jobs
+- `bg` - place a job in the background
+- `fg` - place a job in the foreground
+- `kill` - send a kill signal to a process
+- `killall` - kill processes by name
+- `shutdown` - shut down or reboot the system
