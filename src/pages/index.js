@@ -85,7 +85,7 @@ const IntroSection = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Emoji label="Gmail" src={gmailIcon}></Emoji>
+          <Emoji label="email" src={gmailIcon}></Emoji>
         </a>{" "}
         me in case you want to talk.
       </p>
