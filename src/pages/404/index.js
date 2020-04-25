@@ -26,7 +26,7 @@ const mainStyles = {
 
 const NotFoundPage = () => (
   <>
-    <SEO title="404: Not found" />
+    <SEO title="404: Not found" url="/404" />
     <main sx={mainStyles}>
       <article>
         <p>

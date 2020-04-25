@@ -37,19 +37,22 @@ const postStyles = {
   },
 };
 
-const BlogPost = ({
-  pageContext: {
-    node: {
-      frontmatter: { title, featuredImage },
-      timeToRead,
-      body,
-      excerpt,
+const BlogPost = props => {
+  const {
+    pageContext: {
+      node: {
+        frontmatter: { title, featuredImage, icon },
+        timeToRead,
+        body,
+        excerpt,
+      },
     },
-  },
-}) => {
+    path,
+  } = props;
+
   return (
     <main sx={postStyles}>
-      <SEO title={title} description={excerpt}></SEO>
+      <SEO title={title} description={excerpt} url={path} image={icon}></SEO>
       <h1>{title}</h1>
       <small>{timeToRead} minute read</small>
       {featuredImage ? (

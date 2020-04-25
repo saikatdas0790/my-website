@@ -57,6 +57,7 @@ const BlogList = ({ pageContext }) => {
       <SEO
         pageName="Blog"
         description="Blog posts on personal experiences and learnings"
+        url="/blog"
       ></SEO>
       <h1>Most Recent Posts</h1>
       <PostList postListData={pageContext.posts}></PostList>

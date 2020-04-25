@@ -2,13 +2,14 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title, pageName }) {
+function SEO({ description, lang, meta, title, pageName, url, image }) {
   const {
     site: {
       siteMetadata: {
         title: defaultTitle,
         description: defaultDescription,
         author: defaultAuthor,
+        siteUrl: defaultSiteURL,
       },
     },
   } = useStaticQuery(
@@ -19,6 +20,7 @@ function SEO({ description, lang, meta, title, pageName }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -40,6 +42,10 @@ function SEO({ description, lang, meta, title, pageName }) {
           content: metaDescription,
         },
         {
+          property: `og:url`,
+          content: `${defaultSiteURL}${url}` || defaultSiteURL,
+        },
+        {
           property: `og:title`,
           content: title || defaultTitle,
         },
@@ -50,6 +56,26 @@ function SEO({ description, lang, meta, title, pageName }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: image
+            ? `${defaultSiteURL}/images/post-icons/${image}`
+            : `${defaultSiteURL}/images/site-icon-bordered.svg`,
+        },
+        {
+          property: `og:image`,
+          content: image
+            ? `${defaultSiteURL}/images/post-icons/${image}`
+            : `${defaultSiteURL}/images/site-icon-bordered.svg`,
+        },
+        {
+          property: `og:image:width`,
+          content: "200",
+        },
+        {
+          property: `og:image:height`,
+          content: "200",
         },
         {
           name: `twitter:card`,
@@ -66,6 +92,12 @@ function SEO({ description, lang, meta, title, pageName }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: image
+            ? `${defaultSiteURL}/images/post-icons/${image}`
+            : `${defaultSiteURL}/images/site-icon-bordered.svg`,
         },
       ].concat(meta)}
     />
