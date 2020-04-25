@@ -64,14 +64,6 @@ function SEO({ description, lang, meta, title, pageName, url, image }) {
             : `${defaultSiteURL}/images/site-icon-bordered.svg`,
         },
         {
-          property: `og:image:width`,
-          content: "200",
-        },
-        {
-          property: `og:image:height`,
-          content: "200",
-        },
-        {
           name: `twitter:card`,
           content: `summary`,
         },
