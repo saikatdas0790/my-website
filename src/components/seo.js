@@ -42,10 +42,6 @@ function SEO({ description, lang, meta, title, pageName, url, image }) {
           content: metaDescription,
         },
         {
-          property: `og:url`,
-          content: `${defaultSiteURL}${url}` || defaultSiteURL,
-        },
-        {
           property: `og:title`,
           content: title || defaultTitle,
         },
