@@ -87,6 +87,33 @@ const createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
+  // * Create projects list page
+  createProjectsListingPage(createPage);
+};
+
+const createProjectsListingPage = createPage => {
+  const projectsPerPage = 10;
+  const { projects } = require("./src/data/projects.json");
+  const numPages = Math.ceil(projects.length / projectsPerPage);
+
+  // * Create projects list page
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/projects` : `/projects/${i + 1}`,
+      component: path.resolve("./src/templates/ProjectList/index.js"),
+      context: {
+        projects: projects.slice(
+          i * projectsPerPage,
+          (i + 1) * projectsPerPage,
+        ),
+        limit: projectsPerPage,
+        skip: i * projectsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  });
 };
 
 module.exports = { createPages, onCreateNode };

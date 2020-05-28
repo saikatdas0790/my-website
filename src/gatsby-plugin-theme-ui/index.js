@@ -43,7 +43,4 @@ const theme = {
   useBorderBox: true,
 };
 
-// console.log(base);
-// console.log(theme);
-
 export default theme;
