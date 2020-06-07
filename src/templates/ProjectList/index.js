@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import { Link } from "gatsby";
 import SEO from "../../components/seo";
-import PostList from "../../components/blog/PostList";
+import ProjectCard from "./ProjectCard";
 
 const paginationStyles = {
   padding: "1rem 0",
@@ -52,7 +52,6 @@ const projectPageListStyles = {
 };
 
 const ProjectList = ({ pageContext }) => {
-  console.log(pageContext);
   return (
     <main sx={projectPageListStyles}>
       <SEO
@@ -61,7 +60,11 @@ const ProjectList = ({ pageContext }) => {
         url="/blog"
       ></SEO>
       <h1>Most Recent Projects</h1>
-      <PostList postListData={pageContext.projects}></PostList>
+      <ul>
+        {pageContext.projects.map(project => (
+          <ProjectCard project={project} key={project.url}></ProjectCard>
+        ))}
+      </ul>
       <Pagination pageContext={pageContext}></Pagination>
     </main>
   );
