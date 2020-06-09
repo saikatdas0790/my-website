@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, meta, title, pageName, url, image }) {
