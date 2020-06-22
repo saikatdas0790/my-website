@@ -1,8 +1,9 @@
 ---
-title: "CHEATSHEET: Visual Studio Code - Common Shortcuts and Techniques"
+title: "CHEATSHEET: Visual Studio Code - Common Shortcuts and Techniques on Windows"
 author: Saikat Das
 tags:
   - vscode
+  - windows
   - cheatsheet
   - shortcuts
   - editor
