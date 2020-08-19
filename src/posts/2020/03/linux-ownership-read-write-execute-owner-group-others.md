@@ -88,6 +88,12 @@ Symbolic notation has **3** parts:
   - `w` - write permission
   - `x` - execute permission
 
+Example:
+
+```bash
+chmod u=rwx,g=rx,o=r myfile
+```
+
 ### `chmod` modes examples
 
 - `u+x` - add execute permission for the owner
