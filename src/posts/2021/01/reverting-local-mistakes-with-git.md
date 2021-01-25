@@ -1,10 +1,13 @@
 ---
-title: "Reverting local mistakes in code using Git"
+title: "Reverting local mistakes in code using Git revert, rebase, restore and reset"
 author: Saikat Das
 tags:
   - git
   - version-control
   - revert
+  - rebase
+  - restore
+  - reset
 icon: "git.svg"
 date: "2021-01-23"
 ---
