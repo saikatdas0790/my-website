@@ -52,6 +52,13 @@ The types are:
 - `real` - **floating** 6 decimal digits precision point
 - `double precision` - **floating** 15 decimal digits precision point
 
+### Monetary Type
+
+`money`
+- used to store currency values
+- can store values -92,233,720,368,547,758.08 to +92,233,720,368,547,758.07
+- can be cast to numeric without loss of precision. Other floating point types will lose precision
+
 ## Dates and Times
 
 - `timestamp` - date and time. Default format is `YYYY-MM-DD HH:MM:SS`
