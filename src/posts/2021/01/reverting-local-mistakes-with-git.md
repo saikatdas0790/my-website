@@ -57,7 +57,7 @@ git reset --hard <commit_hash>
 git reset --mixed <commit_hash>
 ```
 
-- The `--hard` flag resets it to the specified commit and removes all the changes upto that point.
+- The `--hard` flag resets it to the specified commit and removes all the changes after that point.
 - The `--mixed` flag resets the branch to the old state but keeps the changes in the tracked files in case we want to keep some of the newer changes
 
 ## Reset a particular file to an old commit state
