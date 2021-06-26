@@ -7,13 +7,26 @@ const config = {
     extend: {
       colors: {
         emerald: colors.emerald,
+        fuchsia: colors.fuchsia,
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            "code::before": {
+              content: false,
+            },
+            "code::after": {
+              content: false,
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 
 module.exports = config;
