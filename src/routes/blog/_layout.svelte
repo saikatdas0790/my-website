@@ -36,8 +36,8 @@
 
 <article class="prose prose-emerald max-w-screen-md mx-auto my-8 px-4">
   <h1 class="!mb-2">{title}</h1>
-  <span>
-    published on <span class="text-emerald-700 italic font-medium">
+  <span class="text-gray-400">
+    published on <span class="text-emerald-600 font-medium">
       {new Date(date).toDateString()}
     </span>
   </span>
