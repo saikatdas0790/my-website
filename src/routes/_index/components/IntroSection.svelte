@@ -42,7 +42,7 @@
   }
 </style>
 
-<section class="text-xl text-center">
+<section class="text-xl text-center mt-8">
   <p>
     <span class="wave" role="img" aria-label="Hi">👋</span>
     , I'm Saikat!
