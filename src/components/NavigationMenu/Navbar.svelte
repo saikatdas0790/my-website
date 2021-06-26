@@ -23,7 +23,7 @@
       {#each navigationLinks as { textToDisplay, url, icon } (textToDisplay)}
         <a
           href={url}
-          class="block py-2 px-6 text-emerald-800 hover:text-emerald-600 active:text-emerald-600 hover:bg-emerald-50 active:bg-emerald-50"
+          class="block py-2 px-6 text-emerald-800 hover:text-emerald-600 active:text-emerald-600 hover:bg-gradient-to-tr hover:from-emerald-100 hover:via-blue-100 hover:to-fuchsia-100 active:bg-gradient-to-tr active:from-emerald-100 active:via-blue-100 active:to-fuchsia-100"
           on:click={() => (menuOpen = false)}>
           <li class="h-10 flex flex-row items-center">
             <svelte:component this={icon} className="h-4 mr-2" />
