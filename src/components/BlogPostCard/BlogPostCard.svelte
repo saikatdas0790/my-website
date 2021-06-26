@@ -38,12 +38,13 @@
 <a
   href={slug}
   sveltekit:prefetch
-  class="border-4 rounded-lg border-transparent block my-2 p-2 md:my-8 md:py-6">
+  class="border-4 rounded-lg border-transparent block my-2 p-2 md:py-6">
   <li class="grid grid-cols-1">
     <img
       src={`/assets/icons/post-topics/${icon}`}
       alt={`${icon.replace(".svg", "")} icon`}
-      class="justify-self-center h-32 my-8 md:row-span-4 md:w-24 md:h-auto md:mr-8 md:ml-4 md:my-0 md:self-center" />
+      class="justify-self-center h-32 my-8 md:row-span-4 md:w-24 md:h-auto md:mr-8 md:ml-4 md:my-0 md:self-center"
+      loading="lazy" />
     <h2 class="font-bold text-2xl">{title}</h2>
     <span class="text-gray-400">
       published on <span class="text-emerald-600 font-medium">

@@ -35,7 +35,7 @@
   export let recentPosts: BlogPostCardDetails[];
 </script>
 
-<main class="max-w-screen-sm mx-auto p-2">
+<main class="max-w-screen-md mx-auto p-2">
   <IntroSection />
   <RecentPosts {recentPosts} />
 </main>
