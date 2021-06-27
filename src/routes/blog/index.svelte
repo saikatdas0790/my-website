@@ -32,7 +32,6 @@
   import BlogPostCard from "$components/BlogPostCard/BlogPostCard.svelte";
 
   export let blogPosts: BlogPostCardDetails[];
-  console.log(blogPosts);
 </script>
 
 <main class="max-w-screen-md mx-auto p-2">
