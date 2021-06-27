@@ -22,16 +22,16 @@
   <meta name="twitter:description" content={description} />
   <meta
     name="twitter:image"
-    content={`https://${$page.host}/assets/icons/post-topics/${icon}`} />
+    content={`${$page.host}/assets/icons/post-topics/${icon}`} />
 
   <!-- Open Graph data -->
-  <meta property="og:url" content={`https://${$page.host}${$page.path}`} />
+  <meta property="og:url" content={`${$page.host}${$page.path}`} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta
     property="og:image"
-    content={`https://${$page.host}/assets/icons/post-topics/${icon}`} />
+    content={`${$page.host}/assets/icons/post-topics/${icon}`} />
 </svelte:head>
 
 <article class="prose prose-emerald max-w-screen-md mx-auto my-8 px-4">
