@@ -29,10 +29,15 @@
 
 <script lang="ts">
   import type { BlogPostCardDetails } from "../getRecentPosts.json";
+  import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
   import BlogPostCard from "$components/BlogPostCard/BlogPostCard.svelte";
 
   export let blogPosts: BlogPostCardDetails[];
 </script>
+
+<SeoMetaHeader
+  siteTitle="Saikat's Blog"
+  siteDescription="This is my blog where I write about what I learn including things like SvelteJS, TailwindCSS, NodeJS, Linux, PostgreSQL among a few" />
 
 <main class="max-w-screen-md mx-auto p-2">
   <ul>
