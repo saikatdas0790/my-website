@@ -30,15 +30,15 @@ const get: RequestHandler = async ({ host }) => {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-        <loc>https://${host}</loc>
+        <loc>https://saikat.dev</loc>
       </url>
       <url>
-        <loc>https://${host}/blog</loc>
+        <loc>https://saikat.dev/blog</loc>
       </url>
       ${posts
         .map(
           ({ created, slug }) => `<url>
-            <loc>https://${host}${slug}</loc>
+            <loc>https://saikat.dev${slug}</loc>
             <lastmod>${created}</lastmod>
             <changefreq>weekly</changefreq>
       </url>`,
