@@ -54,6 +54,4 @@ const get: RequestHandler = async ({ host }) => {
   };
 };
 
-const prerender = true;
-
-export { get, prerender };
+export { get };
