@@ -20,9 +20,6 @@ const config = {
   kit: {
     target: "body#svelte",
     adapter: staticAdapter(),
-    prerender: {
-      pages: ["/sitemap.xml"],
-    },
     vite: {
       resolve: {
         alias: {
