@@ -52,8 +52,9 @@
   </p> -->
   {#if browser}
     {#if navigator.share}
+      <h2>If you found this post useful, please share</h2>
       <button
-        class="w-2/3 max-w-xs  mx-auto rounded-lg my-4 py-3 gap-2 flex items-center justify-center  text-white bg-gradient-to-br from-emerald-300 via-blue-300 to-fuchsia-300 rounded-lg focus:outline-none focus:ring focus:ring-emerald-300"
+        class="w-2/3 max-w-xs  mx-auto rounded-lg my-4 py-3 gap-2 flex items-center justify-center text-white bg-gradient-to-br from-emerald-300 via-blue-300 to-fuchsia-300 focus:outline-none focus:ring focus:ring-emerald-300"
         on:click={() => {
           navigator.share({
             title,
