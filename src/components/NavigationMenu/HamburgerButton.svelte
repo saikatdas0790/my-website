@@ -59,7 +59,7 @@
 </style>
 
 <button
-  class="w-12 h-12 fixed bottom-8 right-8 bg-gradient-to-tr from-emerald-500 via-blue-500 to-fuchsia-500 rounded-lg focus:outline-none focus:ring focus:ring-emerald-300 active:bg-emerald-600 shadow-lg z-10"
+  class="w-12 h-12 fixed bottom-8 right-8 bg-gradient-to-tr from-emerald-500 via-blue-500 to-fuchsia-500 rounded-lg focus:outline-none focus:ring focus:ring-emerald-300 shadow-lg z-10"
   on:click={() => (menuOpen = !menuOpen)}>
   <div class:open={menuOpen}>
     <span />
