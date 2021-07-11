@@ -24,7 +24,7 @@ When we run a command on Linux, there are quite a few substitutions that are don
 
 ## Pathname Expansion
 
-The mechanism by which wildcards work is called pathname expansion. For examples on how to use, check out this [post](/blog/posts/2020/03/linux-globbing-pathnames/)
+The mechanism by which wildcards work is called pathname expansion. For examples on how to use, check out this [post](/blog/posts/linux-globbing-pathnames/)
 
 ## Tilde Expansion
 

@@ -2,7 +2,7 @@
   "name": "my-website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "TAILWIND_MODE=watch svelte-kit dev",
+    "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "cp:404": "ncp build/404/index.html build/404.html",
