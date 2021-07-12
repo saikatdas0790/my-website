@@ -1,7 +1,9 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
 import type { BlogPostCardDetails } from "../getRecentPosts.json";
-import { Index, Builder } from "lunr";
+import type { Index } from "lunr";
+import lunr from "lunr";
+const { Builder } = lunr;
 
 const getAllBlogPosts = async (): Promise<BlogPostCardDetails[]> => {
   const modules = import.meta.glob("../blog/posts/**/index.md");
