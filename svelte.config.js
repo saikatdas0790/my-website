@@ -21,7 +21,7 @@ const config = {
     target: "body#svelte",
     adapter: staticAdapter(),
     prerender: {
-      pages: ["*", "/sitemap.xml"],
+      pages: ["*", "/sitemap.xml", "/blog/getSearchIndex.json"],
     },
     vite: {
       resolve: {

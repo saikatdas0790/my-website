@@ -17,7 +17,7 @@
   a:hover {
     --angle: 0deg;
     border-image: linear-gradient(var(--angle), #34d399, #ec4899) 1;
-    animation: 3s rotate linear infinite;
+    animation: 2s rotate linear infinite;
     border-radius: 0.5rem;
   }
 
