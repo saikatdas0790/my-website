@@ -1,0 +1,57 @@
+<script context="module" lang="ts">
+  import type { LoadInput, LoadOutput } from "@sveltejs/kit/types/page";
+
+  export const load = async ({ fetch }: LoadInput): Promise<LoadOutput> => {
+    let response: LoadOutput = {};
+
+    try {
+      const getProjectEntriesFetchPromise = fetch(
+        `/projects/getProjectEntries.json`,
+        {
+          method: "GET",
+        },
+      );
+
+      response = {
+        props: {
+          projectEntries: await (await getProjectEntriesFetchPromise).json(),
+        },
+      };
+    } catch (error) {
+      console.error(error);
+      response = {
+        status: 503,
+      };
+    }
+
+    return response;
+  };
+</script>
+
+<script lang="ts">
+  import type { ProjectEntryCardDetails } from "src/types";
+  import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
+  import ProjectEntryCard from "$components/ProjectEntryCard/ProjectEntryCard.svelte";
+
+  export let projectEntries: ProjectEntryCardDetails[];
+  let filteredPosts = projectEntries;
+</script>
+
+<SeoMetaHeader
+  siteTitle="Things I've Built"
+  siteDescription="This is my portfolio of sorts where I document and showcase things I've built, going over their highlights or salient points." />
+
+<main class="max-w-screen-md mx-auto p-2">
+  <h1 class="font-bold text-3xl text-center">Things I've Built</h1>
+  <ul>
+    {#each filteredPosts as { title, description, startDate, endDate, coverPhoto, slug } (slug)}
+      <ProjectEntryCard
+        {title}
+        {description}
+        {startDate}
+        {endDate}
+        {coverPhoto}
+        {slug} />
+    {/each}
+  </ul>
+</main>

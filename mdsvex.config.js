@@ -14,7 +14,8 @@ export default {
   //   ],
   // ],
   layout: {
-    // _: "./src/lib/Prose.svelte",
+    _: "./src/routes/blog/_layout.svelte",
     blog: "./src/routes/blog/_layout.svelte",
+    projects: "./src/routes/projects/_layout.svelte",
   },
 };

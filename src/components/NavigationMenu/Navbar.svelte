@@ -2,6 +2,7 @@
   import { fly } from "svelte/transition";
   import HomeIcon from "$icons/flat-color-icons/home.svelte";
   import BlogIcon from "$icons/flat-color-icons/news.svelte";
+  import ProjectsIcon from "$icons/flat-color-icons/deployment.svelte";
 
   const navigationLinks = [
     { textToDisplay: "Home", url: "/", icon: HomeIcon },
@@ -9,6 +10,11 @@
       textToDisplay: "Blog",
       url: "/blog",
       icon: BlogIcon,
+    },
+    {
+      textToDisplay: "Things I've built",
+      url: "/projects",
+      icon: ProjectsIcon,
     },
   ];
 
