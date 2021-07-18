@@ -1,6 +1,6 @@
 <main class="max-w-screen-md mx-auto p-2">
   <img
-    src="/assets/images/pages/__error/pupper.jpg"
+    src="/assets/images/routes/__error/pupper.jpg"
     alt="Sorry looking pupper"
     class="w-full" />
   <p class="text-xl">
