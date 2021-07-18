@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Index } from "lunr";
-  import type { BlogPostCardDetails } from "src/routes/getRecentPosts.json";
+  import type { BlogPostCardDetails } from "src/types";
 
   export let searchText = "";
   export let filteredPosts: BlogPostCardDetails[];

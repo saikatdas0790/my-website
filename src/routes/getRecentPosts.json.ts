@@ -1,14 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
-
-export type BlogPostCardDetails = {
-  title: string;
-  description: string;
-  tags: string[];
-  created: string;
-  icon: string;
-  slug: string;
-};
+import type { BlogPostCardDetails } from "src/types";
 
 const get: RequestHandler = async () => {
   const modules = import.meta.glob("./blog/posts/**/index.md");

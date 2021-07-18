@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
-import type { BlogPostCardDetails } from "../getRecentPosts.json";
+import type { BlogPostCardDetails } from "src/types";
 import type { Index } from "lunr";
 import lunr from "lunr";
 const { Builder } = lunr;
