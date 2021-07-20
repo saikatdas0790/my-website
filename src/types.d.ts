@@ -10,6 +10,7 @@ export type BlogPostCardDetails = {
 export type ProjectEntryCardDetails = {
   title: string;
   description: string;
+  technologiesUsed: string[];
   coverPhoto: string;
   startDate: Date;
   endDate: Date;
