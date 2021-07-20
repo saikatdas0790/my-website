@@ -39,7 +39,7 @@
   type="text"
   placeholder={shouldShowWaitingIndicator
     ? "Fetching search index, sit tight"
-    : "Start typing to search..."}
+    : "Keep typing to see search results..."}
   bind:value={searchText}
   disabled={shouldShowWaitingIndicator}
   bind:this={searchInput}
