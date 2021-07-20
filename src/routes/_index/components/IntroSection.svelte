@@ -1,7 +1,7 @@
 <script lang="ts">
   import IndianFlagIcon from "$icons/twemoji/flag-for-flag-india.svelte";
   import LinkedinIcon from "$icons/logos/linkedin-icon.svelte";
-  import GmailIcon from "$icons/logos/google-gmail.svelte";
+  // import GmailIcon from "$icons/logos/google-gmail.svelte";
   import GithubIcon from "$icons/logos/github-icon.svelte";
 </script>
 
@@ -42,7 +42,7 @@
   }
 </style>
 
-<section class="text-xl text-center mt-8">
+<section class="text-xl mt-8 border-l-4 pl-8 border-fuchsia-500">
   <p>
     <span class="wave" role="img" aria-label="Hi">👋</span>
     , I'm Saikat!
@@ -75,7 +75,7 @@
         <GithubIcon className="inline h-5" />
       </span>
     </a>
-    <br />
+    <!-- <br />
     You can also{" "}
     <a
       href="mailto:saikatdas0790@gmail.com"
@@ -87,5 +87,6 @@
     </a>
     {" "}
     me in case you want to talk.
+  </p> -->
   </p>
 </section>

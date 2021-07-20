@@ -5,7 +5,7 @@
   import ProjectsIcon from "$icons/flat-color-icons/deployment.svelte";
 
   const navigationLinks = [
-    { textToDisplay: "Home", url: "/", icon: HomeIcon },
+    { textToDisplay: "About Me", url: "/", icon: HomeIcon },
     {
       textToDisplay: "Blog",
       url: "/blog",
