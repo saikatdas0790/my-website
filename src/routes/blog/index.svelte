@@ -51,7 +51,7 @@
 
 <main class="max-w-screen-md mx-auto p-2">
   <SearchWidget bind:filteredPosts {blogPosts} />
-  <h1 class="text-4xl text-center mt-16 mb-8">Blog Posts</h1>
+  <h1 class="text-3xl text-center mt-16 mb-8">Blog Posts</h1>
   <ul>
     {#each filteredPosts as { created, icon, slug, tags, title, description } (slug)}
       <div animate:flip={{ duration: 500 }}>
