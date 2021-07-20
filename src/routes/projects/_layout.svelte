@@ -6,6 +6,7 @@
 
   export let title;
   export let description;
+  export let technologiesUsed;
   export let author;
   export let startDate;
   export let endDate;
@@ -65,4 +66,10 @@
       </button>
     {/if}
   {/if} -->
+  <h2>This Project Uses</h2>
+  <ul>
+    {#each technologiesUsed as technology (technology)}
+      <li>{technology}</li>
+    {/each}
+  </ul>
 </article>

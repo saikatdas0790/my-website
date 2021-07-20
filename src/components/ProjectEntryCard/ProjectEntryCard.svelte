@@ -3,6 +3,7 @@
 
   export let title: string;
   export let description: string;
+  export let technologiesUsed: string[];
   export let startDate: Date;
   export let endDate: Date;
   export let coverPhoto: string;
@@ -35,15 +36,18 @@
     <img
       src={`/assets/images/routes/projects/entries/${coverPhoto}`}
       alt="Large screenshot of landing page"
-      style="aspect-ratio: 16 / 9;" />
+      width="1280"
+      height="720"
+      loading="lazy" />
     <h2 class="text-2xl font-medium my-2">{title}</h2>
-    <p class="mb-4">
+    <p>
       worked on this between <span class="font-semibold">
         {format(new Date(startDate), "MMM yyyy")}
       </span>
       and
       <span class="font-semibold">{format(new Date(endDate), "MMM yyyy")}</span>
     </p>
-    <p>{description}</p>
+    <p class="my-4">{description}</p>
+    <p class="text-fuchsia-600 text-sm">#{technologiesUsed.join(" #")}</p>
   </a>
 </li>
