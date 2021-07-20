@@ -1,6 +1,19 @@
 ---
 title: "The Knotty Tales"
 description: "A platform for wedding vendors like photographers or makeup artists to list their services for visitors to discover. It includes a marketplace for vendors to purchase credits and redeem them for enquiry leads for reaching out with their services"
+technologiesUsed:
+  - ReactJS
+  - GatsbyJS
+  - Material UI
+  - Firebase Firestore
+  - Firebase Authentication
+  - Firebase Cloud Functions
+  - Firebase Storage
+  - Firebase Cloud Messaging
+  - Google Analytics
+  - Facebook API
+  - PayU Payment Gateway
+  - Hubspot API
 author: "Saikat Das"
 coverPhoto: "the-knotty-tales/theknottytales-cover.jpg"
 startDate: "2019-09-01"
