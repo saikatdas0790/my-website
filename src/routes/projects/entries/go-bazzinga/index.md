@@ -22,7 +22,17 @@ endDate: "2021-07-19"
 layout: "projects"
 ---
 
+<script>
+  import CodeSnapshotImage from "./code-snapshot.jpg";
+</script>
+
+
 This is primarily a short video platform where any user can post a challenge for other users to participate. Participations can then be upvoted by users to decide winners with the highest amount of upvotes.
+
+Here is what the current code statistics look like:
+
+<img src={CodeSnapshotImage} alt="Code Statistics" class="mx-auto">
+
 
 ## Highlights of the website include:
 - built using the cutting edge **SvelteKit** framework
