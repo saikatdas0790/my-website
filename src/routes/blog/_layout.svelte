@@ -1,8 +1,5 @@
 <script>
-  import { browser } from "$app/env";
-
   import { page } from "$app/stores";
-  import ShareIcon from "$icons/flat-color-icons/share.svelte";
 
   export let title;
   export let description;
@@ -46,25 +43,4 @@
   </span>
 
   <slot />
-  <!-- 
-  <p class="text-emerald-600 text-xl !my-14">
-    {tags.map((tag) => `#${tag}`).join(" ")}
-  </p> -->
-  {#if browser}
-    {#if navigator.share}
-      <h2>If you found this post useful, please consider sharing</h2>
-      <button
-        class="w-2/3 max-w-xs  mx-auto rounded-lg my-4 py-3 gap-2 flex items-center justify-center text-white bg-gradient-to-br from-emerald-300 via-blue-300 to-fuchsia-300 focus:outline-none focus:ring focus:ring-emerald-300"
-        on:click={() => {
-          navigator.share({
-            title,
-            text: description,
-            url: location.href,
-          });
-        }}>
-        <ShareIcon className="h-5" />
-        <span class="text-lg">Share this post</span>
-      </button>
-    {/if}
-  {/if}
 </article>
