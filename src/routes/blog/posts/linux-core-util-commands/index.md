@@ -61,6 +61,8 @@ Linux path names can be specified in the following two ways:
 - `rm` - remove files and directories
 - `ln` - create _hard_ and _symbolic_ links
 - `alias` - create an alias for a command. Use `unalias` to remove an _aliased_ command
+- `touch` - create a new file
+- `tar` - used to bundle, compress and uncompress files and folders
 
 ### `cp`, `mv` & `rm` common arguments
 

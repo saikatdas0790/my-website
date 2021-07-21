@@ -90,13 +90,19 @@ To launch a program and immediately place it in the background, we follow the co
 
 We can also launch a process, press `Ctrl + z` to pause it, and then resume it in the foreground using the `fg` command or in the background using the `bg` command.
 
-We can use `jobs` to list the currently running background processes.
+We can use `jobs` to list the currently running background processes. The output would look something like:
+
+```bash
+[1] 31562
+```
 
 We can bring any background jobs to the foreground by using the `fg` command like this:
 
 ```bash
 fg %<job_number>
 ```
+
+Note that the job number here is different than the process ID. The job number in the above example is **1**, between the square brackets whereas the **31562** is the process ID
 
 ## Stopping Processes
 

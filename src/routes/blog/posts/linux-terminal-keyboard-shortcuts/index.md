@@ -37,3 +37,13 @@ I've listed here the keyboard shortcuts I find useful:
 - `Alt + d` - cut text from the **cursor location** to the **end of the current word**
 - `Alt + Backspace` - cut text from the **cursor location** to the **beginning of the current word**
 - `Ctrl + y` - paste text into the current cursor location
+
+## Process Management
+
+- `Ctrl + c` - to send a *interrupt* signal to the process
+- `Ctrl + d` - exit the program indiscriminately
+
+## Other
+
+- `!!` - entering this will rerun the last command. Can be used in conjunction with `sudo`
+- `Ctrl + r` - reverse search. Will go through the last run commands in reverse order. Uses the bash history

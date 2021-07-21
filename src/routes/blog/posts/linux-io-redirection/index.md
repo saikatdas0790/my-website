@@ -27,6 +27,10 @@ But it is up to us to send the right data through the right pipe.
 
 Since "everything in Linux is a file", there are special files called **standard output (stdout)**, **standard input (stdin)** and **standard error (stderr)**. **stdout** and **stderr** default to the current display device and **stdin** defaults to the keyboard. _I/O Redirection_ lets us redirect where these input and output are sent.
 
+## Mental Model
+
+The way to think about these tools is that we can feed the contents of a file to a program via standard input, dump the output of a program to a file via standard output or pass the output of a program to another program using pipes
+
 ## Redirection `>` operator
 
 Using the `>` operator we can send the output of a program to a file. We can use the `>>` operator to append the output to the end of a file instead of overwriting the current contents which the `>` operator does.
@@ -47,6 +51,14 @@ We can redirect both standard output and error to another file with this notatio
 
 ```bash
 ls -l /bin/usr &> ls-output.txt
+```
+
+## Redirection `<` operator
+
+This takes a file and feeds that into a program as standard input. For example:
+
+```bash
+grep "some-file" < ls-output.txt
 ```
 
 ## Pipelines
