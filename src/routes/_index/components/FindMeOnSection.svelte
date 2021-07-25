@@ -30,24 +30,6 @@
     </li>
     <li class="mb-4">
       <a
-        href="mailto:saikatdas0790@gmail.com"
-        target="_blank"
-        class="flex gap-2 items-center text-xl p-4 border-l-2 border-red-500 hover:shadow-md transition duration-300">
-        <GmailIcon className="w-5 h-5" />
-        <span>Email</span>
-      </a>
-    </li>
-    <li class="mb-4">
-      <a
-        href="https://www.linkedin.com/in/saikat-das-13674166/"
-        target="_blank"
-        class="flex gap-2 items-center text-xl p-4 border-l-2 border-blue-700 hover:shadow-md transition duration-300">
-        <LinkedInIcon className="w-5 h-5" />
-        <span>LinkedIn</span>
-      </a>
-    </li>
-    <li class="mb-4">
-      <a
         href="https://github.com/saikatdas0790"
         target="_blank"
         class="flex gap-2 items-center text-xl p-4 border-l-2 border-black hover:shadow-md transition duration-300">
@@ -62,6 +44,24 @@
         class="flex gap-2 items-center text-xl p-4 border-l-2 border-red-600 hover:shadow-md transition duration-300">
         <NPMIcon className="w-5 h-5" />
         <span>NPM</span>
+      </a>
+    </li>
+    <li class="mb-4">
+      <a
+        href="mailto:saikatdas0790@gmail.com"
+        target="_blank"
+        class="flex gap-2 items-center text-xl p-4 border-l-2 border-red-500 hover:shadow-md transition duration-300">
+        <GmailIcon className="w-5 h-5" />
+        <span>Email</span>
+      </a>
+    </li>
+    <li class="mb-4">
+      <a
+        href="https://www.linkedin.com/in/saikat-das-13674166/"
+        target="_blank"
+        class="flex gap-2 items-center text-xl p-4 border-l-2 border-blue-700 hover:shadow-md transition duration-300">
+        <LinkedInIcon className="w-5 h-5" />
+        <span>LinkedIn</span>
       </a>
     </li>
     <li class="mb-4">
