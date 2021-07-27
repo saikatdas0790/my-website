@@ -14,7 +14,7 @@ icon: "git.png"
 date: "2021-07-27"
 ---
 
-Git is pretty revolutionary in how it's branching system is so lightweight and lets us create potentially unlimited branches in our source code repository to play around and experiment with it. 🥰
+Git is pretty revolutionary in how its branching system is so lightweight and lets us create potentially unlimited branches in our source code repository to play around and experiment with it. 🥰
 
 Git branches can be understood in terms of **local** branches, i.e., branches that reside on our local repository on disk and **remote** branches, i.e., branches that reside on a remote computer which we use as a source of truth for syncing and exchanging source code with our peers who also have a copy of this repository locally and are working on it.
 
