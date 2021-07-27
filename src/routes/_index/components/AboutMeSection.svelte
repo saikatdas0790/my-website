@@ -55,8 +55,9 @@
     <span class="bg-green-50">MongoDB</span>
     and found it quite intuitive but haven't built any products on it as MongoDB
     Atlas costs are quite prohibitive at scale. Not a huge SQL fan but have working
-    knowledge. Mostly use Prisma 2 to interact with PostgreSQL. Have also tinkered
-    with
+    knowledge. Mostly use
+    <span class="bg-green-50">Prisma 2</span>
+    to interact with PostgreSQL. Have also tinkered with
     <span class="bg-green-50">Dgraph</span>
     and
     <span class="bg-green-50">FaunaDB</span>
