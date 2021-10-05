@@ -78,6 +78,9 @@ const get: RequestHandler = async ({ host }) => {
       <url>
         <loc>https://saikat.dev/blog</loc>
       </url>
+      <url>
+        <loc>https://saikat.dev/projects</loc>
+      </url>
       ${posts
         .map(
           ({ created, slug }) => `<url>
