@@ -230,7 +230,41 @@ npm run check
 
 ## Dev Container
 
-The `.devcontainer/devcontainer.json` uses the `mcr.microsoft.com/devcontainers/base:noble` (Ubuntu Noble) image. No additional features are configured by default. Update `devcontainer.json` when onboarding tooling that should be pre-installed in the dev environment.
+The `.devcontainer/devcontainer.json` uses the `mcr.microsoft.com/devcontainers/base:noble` (Ubuntu Noble) image with the following features:
+
+| Feature | Purpose |
+|---|---|
+| `ghcr.io/devcontainers/features/node:1` | Node.js runtime |
+| `ghcr.io/devcontainers/features/github-cli:1` | `gh` CLI |
+| `ghcr.io/devcontainers-extra/features/ansible:2` | Ansible + ansible-vault |
+
+The `postCreateCommand` runs `.devcontainer/postCreate.sh`, which: checks the SSH agent, configures `gh` to use SSH, and — if `ansible/.vault_pass` exists — automatically runs `ansible-playbook ansible/setup_env.yml` to generate `.env` from the vault.
+
+---
+
+## Secrets & Ansible Vault
+
+Cloudflare credentials are managed with Ansible Vault. The encrypted `ansible/vars/vault.yml` is committed; the vault password lives only in `ansible/.vault_pass` (gitignored) and the `ANSIBLE_VAULT_PASSWORD` GitHub Actions secret.
+
+**First-time setup:**
+```bash
+cd ansible && ./init_vault.sh
+```
+
+**Stored secrets** (only truly sensitive values go in the vault):
+
+| Variable | Where |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Vault (`vault_cloudflare_api_token`) |
+| `CLOUDFLARE_ZONE_ID` | Plaintext in `vars/main.yml` |
+| `CLOUDFLARE_ACCOUNT_ID` | Plaintext in `vars/main.yml` |
+
+**Regenerate `.env` after editing secrets:**
+```bash
+cd ansible && ansible-playbook setup_env.yml
+```
+
+**CI:** The deploy workflow reads `ANSIBLE_VAULT_PASSWORD` from GitHub Actions secrets if Cloudflare API access is required. See `ansible/README.md` for full documentation.
 
 ---
 

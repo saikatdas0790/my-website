@@ -39,3 +39,19 @@ else
     echo "⚠ GitHub CLI not authenticated (expected in CI)"
     echo "  For local development: ensure gh is authenticated in WSL"
 fi
+
+# Generate .env from Ansible Vault if vault password is present
+echo ""
+echo "Checking Ansible Vault..."
+if [ -f "ansible/.vault_pass" ]; then
+    echo "✓ Vault password found, generating .env..."
+    (cd ansible && ansible-playbook setup_env.yml)
+    echo "✓ .env generated"
+elif [ -f "ansible/vars/vault.yml" ]; then
+    echo "⚠ vault.yml exists but no .vault_pass found"
+    echo "  Set your vault password: echo 'your_password' > ansible/.vault_pass && chmod 600 ansible/.vault_pass"
+    echo "  Then run: cd ansible && ansible-playbook setup_env.yml"
+else
+    echo "ℹ️  Ansible Vault not yet initialised"
+    echo "  Run: cd ansible && ./init_vault.sh"
+fi
