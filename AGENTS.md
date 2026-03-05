@@ -242,6 +242,28 @@ The `postCreateCommand` runs `.devcontainer/postCreate.sh`, which: checks the SS
 
 ---
 
+## Hosting & DNS
+
+The site is deployed to **GitHub Pages** via the `Deploy to GitHub Pages` GitHub Actions workflow (`.github/workflows/deploy.yml`). The build runs inside the devcontainer using `devcontainers/ci`, so CI exactly mirrors the local environment.
+
+| Aspect | Detail |
+|---|---|
+| Static output | `build/` directory produced by `npm run build` |
+| Pages source | GitHub Actions workflow (`build_type: workflow`) |
+| Custom domain | `saikat.dev` (configured via `static/CNAME`) |
+| DNS provider | Cloudflare (orange cloud — proxied) |
+| SSL mode | Cloudflare Full (Cloudflare ↔ visitor HTTPS; Cloudflare ↔ GitHub HTTPS without strict cert validation) |
+| www redirect | `www.saikat.dev` CNAME → `saikatdas0790.github.io` (proxied) |
+
+**DNS records** (all proxied through Cloudflare):
+- 4× A records: `saikat.dev` → GitHub Pages IPs (`185.199.108-111.153`)
+- 4× AAAA records: `saikat.dev` → GitHub Pages IPv6 IPs (`2606:50c0:800{0-3}::153`)
+- 1× CNAME: `www.saikat.dev` → `saikatdas0790.github.io`
+
+**Devcontainer image** is cached to GHCR at `ghcr.io/saikatdas0790/my-website-devcontainer` to speed up CI builds.
+
+---
+
 ## Secrets & Ansible Vault
 
 Cloudflare credentials are managed with Ansible Vault. The encrypted `ansible/vars/vault.yml` is committed; the vault password lives only in `ansible/.vault_pass` (gitignored) and the `ANSIBLE_VAULT_PASSWORD` GitHub Actions secret.
@@ -264,7 +286,7 @@ cd ansible && ./init_vault.sh
 cd ansible && ansible-playbook setup_env.yml
 ```
 
-**CI:** The deploy workflow reads `ANSIBLE_VAULT_PASSWORD` from GitHub Actions secrets if Cloudflare API access is required. See `ansible/README.md` for full documentation.
+**CI:** The `ANSIBLE_VAULT_PASSWORD` secret is stored in GitHub Actions but the current deploy workflow does not use it — the build only needs Node.js. It is available for future workflows that need Cloudflare API access (e.g., cache purging, DNS updates). See `ansible/README.md` for full documentation.
 
 ---
 
