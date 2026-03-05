@@ -1,2 +1,1 @@
-- Rename the main branch to main from master and push the changes to the remote repository. Make this the main branch for the repository and remove the master branch from the remote repository. Update all documentation and references to the master branch to reflect the new main branch name.
-- This project has not been updated in a long time. I need to upgrade all the dependencies to their latest versions
+- 
