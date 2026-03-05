@@ -1,30 +1,3 @@
-<script context="module" lang="ts">
-  import type { LoadInput, LoadOutput } from "@sveltejs/kit/types/page";
-
-  export const load = async ({ fetch }: LoadInput): Promise<LoadOutput> => {
-    let response: LoadOutput = {};
-
-    try {
-      const getBlogPostsFetchPromise = fetch(`/blog/getBlogPosts.json`, {
-        method: "GET",
-      });
-
-      response = {
-        props: {
-          blogPosts: await (await getBlogPostsFetchPromise).json(),
-        },
-      };
-    } catch (error) {
-      console.error(error);
-      response = {
-        status: 503,
-      };
-    }
-
-    return response;
-  };
-</script>
-
 <script lang="ts">
   import type { BlogPostCardDetails } from "src/types";
   import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
@@ -32,8 +5,9 @@
   import SearchWidget from "$components/SearchWidget/SearchWidget.svelte";
   import { flip } from "svelte/animate";
 
-  export let blogPosts: BlogPostCardDetails[];
-  let filteredPosts = blogPosts;
+  export let data: { blogPosts: BlogPostCardDetails[] };
+  $: blogPosts = data.blogPosts;
+  $: filteredPosts = data.blogPosts;
 </script>
 
 <style>

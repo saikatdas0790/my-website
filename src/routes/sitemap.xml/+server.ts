@@ -1,9 +1,11 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
+
+export const prerender = true;
 import type { BlogPostCardDetails, ProjectEntryCardDetails } from "src/types";
 
 async function getBlogPostDetails() {
-  const modules = import.meta.glob("./blog/posts/**/index.md");
+  const modules = import.meta.glob("../blog/posts/**/*+page.md");
 
   const posts: BlogPostCardDetails[] = [];
 
@@ -11,7 +13,7 @@ async function getBlogPostDetails() {
     Object.entries(modules).map(async ([file, module]) => {
       const {
         metadata: { title, description, tags, date, icon },
-      } = await module();
+      } = await (module as () => Promise<{ metadata: BlogPostCardDetails & { date: string } }>)();
 
       posts.push({
         title,
@@ -31,7 +33,7 @@ async function getBlogPostDetails() {
 }
 
 async function getProjectEntryDetails() {
-  const modules = import.meta.glob("./projects/entries/**/index.md");
+  const modules = import.meta.glob("../projects/entries/**/*+page.md");
 
   const entries: ProjectEntryCardDetails[] = [];
 
@@ -46,7 +48,7 @@ async function getProjectEntryDetails() {
           endDate,
           coverPhoto,
         },
-      } = await module();
+      } = await (module as () => Promise<{ metadata: ProjectEntryCardDetails & { startDate: string; endDate: string } }>)();
 
       entries.push({
         title,
@@ -66,7 +68,7 @@ async function getProjectEntryDetails() {
   return entries;
 }
 
-const get: RequestHandler = async ({ host }) => {
+export const GET: RequestHandler = async () => {
   const posts: BlogPostCardDetails[] = await getBlogPostDetails();
   const entries: ProjectEntryCardDetails[] = await getProjectEntryDetails();
 
@@ -82,30 +84,26 @@ const get: RequestHandler = async ({ host }) => {
         <loc>https://saikat.dev/projects</loc>
       </url>
       ${posts
-        .map(
-          ({ created, slug }) => `<url>
+      .map(
+        ({ created, slug }) => `<url>
             <loc>https://saikat.dev${slug}</loc>
             <lastmod>${created}</lastmod>
             <changefreq>weekly</changefreq>
       </url>`,
-        )
-        .join("")}
+      )
+      .join("")}
       ${entries
-        .map(
-          ({ slug }) => `<url>
+      .map(
+        ({ slug }) => `<url>
             <loc>https://saikat.dev${slug}</loc>
             <changefreq>weekly</changefreq>
       </url>`,
-        )
-        .join("")}
+      )
+      .join("")}
     </urlset>
   `;
 
-  return {
-    headers: {},
-    status: 200,
-    body,
-  };
+  return new Response(body, {
+    headers: { "content-type": "application/xml; charset=utf-8" },
+  });
 };
-
-export { get };

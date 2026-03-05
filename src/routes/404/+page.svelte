@@ -1,3 +1,6 @@
+<script lang="ts">
+</script>
+
 <main class="max-w-screen-md mx-auto p-2">
   <img
     src="/assets/images/routes/__error/pupper.jpg"
@@ -10,7 +13,7 @@
   <p>
     Why not visit again in the future when this is available? In the meantime,
     why not <a
-      sveltekit:prefetch
+      data-sveltekit-preload-data="hover"
       href="/blog"
       class="text-fuchsia-500 font-semibold">
       check out

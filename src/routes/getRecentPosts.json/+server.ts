@@ -1,9 +1,12 @@
+import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "@sveltejs/kit";
+
+export const prerender = true;
 import { parse } from "path";
 import type { BlogPostCardDetails } from "src/types";
 
-const get: RequestHandler = async () => {
-  const modules = import.meta.glob("./blog/posts/**/index.md");
+export const GET: RequestHandler = async () => {
+  const modules = import.meta.glob("../blog/posts/**/*+page.md");
 
   const posts: BlogPostCardDetails[] = [];
 
@@ -11,7 +14,7 @@ const get: RequestHandler = async () => {
     Object.entries(modules).map(async ([file, module]) => {
       const {
         metadata: { title, description, tags, date, icon },
-      } = await module();
+      } = await (module as () => Promise<{ metadata: BlogPostCardDetails & { date: string } }>)();
 
       posts.push({
         title,
@@ -27,11 +30,5 @@ const get: RequestHandler = async () => {
   // Newest first
   posts.sort((a, b) => (a.created > b.created ? -1 : 1));
 
-  return {
-    headers: {},
-    status: 200,
-    body: JSON.stringify(posts.slice(0, 5)),
-  };
+  return json(posts.slice(0, 5));
 };
-
-export { get };

@@ -1,40 +1,10 @@
-<script context="module" lang="ts">
-  import type { LoadInput, LoadOutput } from "@sveltejs/kit/types/page";
-
-  export const load = async ({ fetch }: LoadInput): Promise<LoadOutput> => {
-    let response: LoadOutput = {};
-
-    try {
-      const getProjectEntriesFetchPromise = fetch(
-        `/projects/getProjectEntries.json`,
-        {
-          method: "GET",
-        },
-      );
-
-      response = {
-        props: {
-          projectEntries: await (await getProjectEntriesFetchPromise).json(),
-        },
-      };
-    } catch (error) {
-      console.error(error);
-      response = {
-        status: 503,
-      };
-    }
-
-    return response;
-  };
-</script>
-
 <script lang="ts">
   import type { ProjectEntryCardDetails } from "src/types";
   import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
   import ProjectEntryCard from "$components/ProjectEntryCard/ProjectEntryCard.svelte";
 
-  export let projectEntries: ProjectEntryCardDetails[];
-  let filteredPosts = projectEntries;
+  export let data: { projectEntries: ProjectEntryCardDetails[] };
+  $: filteredPosts = data.projectEntries;
 </script>
 
 <style>

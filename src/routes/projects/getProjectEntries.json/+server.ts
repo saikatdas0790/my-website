@@ -1,9 +1,10 @@
+import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
 import type { ProjectEntryCardDetails } from "src/types";
 
-const get: RequestHandler = async () => {
-  const modules = import.meta.glob("../projects/entries/**/index.md");
+export const GET: RequestHandler = async () => {
+  const modules = import.meta.glob("../entries/**/*+page.md");
 
   const entries: ProjectEntryCardDetails[] = [];
 
@@ -18,7 +19,7 @@ const get: RequestHandler = async () => {
           endDate,
           coverPhoto,
         },
-      } = await module();
+      } = await (module as () => Promise<{ metadata: ProjectEntryCardDetails & { startDate: string; endDate: string } }>)();
 
       entries.push({
         title,
@@ -27,7 +28,7 @@ const get: RequestHandler = async () => {
         startDate: new Date(startDate),
         endDate: new Date(endDate),
         coverPhoto,
-        slug: `/${parse(file).dir.split("/").slice(1).join("/")}`,
+        slug: `/projects/${parse(file).dir.split("/").slice(1).join("/")}`,
       });
     }),
   );
@@ -35,11 +36,5 @@ const get: RequestHandler = async () => {
   // Newest first
   entries.sort((a, b) => (a.startDate > b.startDate ? -1 : 1));
 
-  return {
-    headers: {},
-    status: 200,
-    body: JSON.stringify(entries),
-  };
+  return json(entries);
 };
-
-export { get };
