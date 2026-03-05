@@ -11,6 +11,7 @@
 		"ghcr.io/devcontainers-extra/features/ansible:2": {}
 	},
 	// Mount SSH agent socket from WSL host into container
+	// (CI creates placeholder stubs for these paths before starting the container)
 	"mounts": [
 		"type=bind,source=${env:HOME}/.ssh/agent.sock,target=/ssh-agent,consistency=cached",
 		"type=bind,source=${env:HOME}/.config/gh,target=/home/vscode/.config/gh,consistency=cached"
