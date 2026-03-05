@@ -8,6 +8,12 @@ echo "========================================="
 echo "DevContainer Post-Create Setup"
 echo "========================================="
 
+# Install system packages
+echo ""
+echo "Installing system packages..."
+sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils
+echo "✓ Installed dnsutils (dig, nslookup, host)"
+
 # Check SSH Agent accessibility
 echo ""
 echo "Checking SSH Agent..."
@@ -45,7 +51,7 @@ echo ""
 echo "Checking Ansible Vault..."
 if [ -f "ansible/.vault_pass" ]; then
     echo "✓ Vault password found, generating .env..."
-    (cd ansible && ansible-playbook setup_env.yml)
+    (ansible-playbook ansible/setup_env.yml)
     echo "✓ .env generated"
 elif [ -f "ansible/vars/vault.yml" ]; then
     echo "⚠ vault.yml exists but no .vault_pass found"
