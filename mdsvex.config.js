@@ -1,3 +1,8 @@
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 export default {
   extensions: [".md"],
   // smartypants: {
@@ -14,8 +19,8 @@ export default {
   //   ],
   // ],
   layout: {
-    _: "./src/routes/blog/_layout.svelte",
-    blog: "./src/routes/blog/_layout.svelte",
-    projects: "./src/routes/projects/_layout.svelte",
+    _: resolve(__dirname, "./src/routes/blog/_layout.svelte"),
+    blog: resolve(__dirname, "./src/routes/blog/_layout.svelte"),
+    projects: resolve(__dirname, "./src/routes/projects/_layout.svelte"),
   },
 };

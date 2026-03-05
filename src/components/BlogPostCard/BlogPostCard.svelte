@@ -37,7 +37,7 @@
 
 <a
   href={slug}
-  sveltekit:prefetch
+  data-sveltekit-preload-data="hover"
   class="border-4 rounded-lg border-transparent block my-2 p-2 md:py-6">
   <li class="grid grid-cols-1">
     <img

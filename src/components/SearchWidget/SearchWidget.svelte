@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Index } from "lunr";
+  import type { Index } from "lunr";
   import type { BlogPostCardDetails } from "src/types";
 
   export let searchText = "";

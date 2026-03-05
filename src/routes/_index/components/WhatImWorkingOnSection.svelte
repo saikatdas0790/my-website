@@ -12,7 +12,7 @@
   <p>
     I'm currently building the <span class="bg-fuchsia-200">Go Bazzinga</span>
     app as a progressive web app (PWA). You can check out what it's about
-    <a href="/projects/entries/go-bazzinga" sveltekit:prefetch target="_blank">
+    <a href="/projects/entries/go-bazzinga" data-sveltekit-preload-data="hover" target="_blank">
       here
     </a>
     and the app

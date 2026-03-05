@@ -32,7 +32,7 @@
 </style>
 
 <li class="border-4 rounded-lg border-transparent block my-2 p-2 md:py-6">
-  <a href={slug} sveltekit:prefetch>
+  <a href={slug} data-sveltekit-preload-data="hover">
     <img
       src={`/assets/images/routes/projects/entries/${coverPhoto}`}
       alt="Large screenshot of landing page"
