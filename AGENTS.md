@@ -268,10 +268,11 @@ The site is deployed to **GitHub Pages** via the `Deploy to GitHub Pages` GitHub
 
 Cloudflare credentials are managed with Ansible Vault. The encrypted `ansible/vars/vault.yml` is committed; the vault password lives only in `ansible/.vault_pass` (gitignored) and the `ANSIBLE_VAULT_PASSWORD` GitHub Actions secret.
 
-**First-time setup:**
+**First-time setup (new developer):**
 ```bash
-cd ansible && ./init_vault.sh
+echo 'your_vault_password' > ansible/.vault_pass && chmod 600 ansible/.vault_pass
 ```
+`postCreate.sh` will then automatically run the playbook to generate `.env` on next container start.
 
 **Stored secrets** (only truly sensitive values go in the vault):
 
