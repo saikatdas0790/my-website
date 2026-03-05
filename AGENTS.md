@@ -21,14 +21,16 @@ This is a personal website and blog for Saikat Das, built as a **statically gene
 
 | Technology | Role |
 |---|---|
-| [SvelteKit](https://kit.svelte.dev/) | Framework (static adapter) |
+| [SvelteKit 2](https://kit.svelte.dev/) | Framework (static adapter) |
+| [Svelte 5](https://svelte.dev/) | UI framework (legacy compat syntax in use) |
 | [TypeScript](https://www.typescriptlang.org/) | Language |
-| [TailwindCSS v2](https://tailwindcss.com/) | Styling (JIT mode) |
-| [mdsvex](https://mdsvex.com/) | Markdown-in-Svelte for blog posts and project entries |
+| [TailwindCSS v4](https://tailwindcss.com/) | Styling (CSS-based config via `@import "tailwindcss"`) |
+| [mdsvex 0.12](https://mdsvex.com/) | Markdown-in-Svelte for blog posts and project entries |
 | [PostCSS](https://postcss.org/) + autoprefixer + cssnano | CSS processing |
 | [lunr](https://lunrjs.com/) | Client-side full-text search index |
-| [date-fns](https://date-fns.org/) | Date formatting |
-| [vite-imagetools](https://github.com/JonasKruckenberg/imagetools) | Image optimization at build time |
+| [date-fns v4](https://date-fns.org/) | Date formatting |
+| [vite-imagetools v10](https://github.com/JonasKruckenberg/imagetools) | Image optimization at build time |
+| [Vite 7](https://vitejs.dev/) | Build tool |
 
 The static adapter renders all pages at build time. There is no server-side runtime.
 
@@ -38,20 +40,20 @@ The static adapter renders all pages at build time. There is no server-side runt
 
 ```
 /
-├── mdsvex.config.js          # mdsvex configuration (extensions, layouts)
-├── svelte.config.js          # SvelteKit config (adapter, path aliases, vite plugins)
-├── tailwind.config.cjs       # Tailwind theme extensions and plugins
-├── postcss.config.cjs        # PostCSS plugins
-├── tsconfig.json             # TypeScript config
-├── .eslintrc.cjs             # ESLint config
+├── mdsvex.config.js          # mdsvex configuration (extensions, absolute layout paths)
+├── svelte.config.js          # SvelteKit config (adapter, path aliases via kit.alias)
+├── vite.config.ts            # Vite config (sveltekit + imagetools plugins)
+├── postcss.config.cjs        # PostCSS plugins (@tailwindcss/postcss)
+├── eslint.config.js          # ESLint flat config (replaces .eslintrc.cjs)
+├── tsconfig.json             # TypeScript config (extends .svelte-kit/tsconfig.json)
 ├── src/
-│   ├── app.html              # Root HTML shell
-│   ├── app.postcss           # Global styles (Tailwind directives + Prism theme)
+│   ├── app.html              # Root HTML shell (%sveltekit.head%, %sveltekit.body%)
+│   ├── app.postcss           # Global styles (@import "tailwindcss" + Prism theme)
 │   ├── types.d.ts            # Shared TypeScript types
 │   ├── global.d.ts           # Global ambient declarations
 │   ├── components/           # Reusable Svelte components
 │   ├── icons/                # SVG icon components (Svelte wrappers)
-│   ├── routes/               # SvelteKit file-based routes
+│   ├── routes/               # SvelteKit file-based routes (SK2 conventions)
 │   └── utils/                # Utility functions and constants
 └── static/                   # Static assets (images, logos, manifest, service worker)
 ```
@@ -60,7 +62,7 @@ The static adapter renders all pages at build time. There is no server-side runt
 
 ## Path Aliases
 
-Defined in `svelte.config.js` under `kit.vite.resolve.alias`. Always use these instead of relative paths where applicable:
+Defined in `svelte.config.js` under `kit.alias`. Always use these instead of relative paths where applicable:
 
 | Alias | Resolves to |
 |---|---|
@@ -104,12 +106,14 @@ Each icon accepts a `className` prop (default `"h-4"`) to control size via Tailw
 
 ## Routes and Layouts
 
-SvelteKit file-based routing is used. Key conventions:
+SvelteKit 2 file-based routing is used. Key conventions:
 
-- `__layout.svelte` — top-level site layout (navigation, global wrapper)
-- `_layout.svelte` inside a sub-route — layout for that section only (e.g., blog posts, project entries)
+- `+layout.svelte` — top-level site layout (navigation, global wrapper)
+- `_layout.svelte` inside a sub-route — mdsvex layout for blog posts / project entries (prefixed `_` so SK2 ignores it as a route)
 - Routes prefixed with `_` (like `_index/`) are non-routable component directories, not pages
-- JSON endpoints use the `.json.ts` suffix (e.g., `getBlogPosts.json.ts`, `getProjectEntries.json.ts`)
+- API endpoints use `<name>/+server.ts` subdirectory format with `GET` export and `json()` from `@sveltejs/kit`
+- Page data loading uses `+page.ts` co-located load functions with `export let data` prop in `+page.svelte`
+- `src/routes/+layout.ts` exports `export const prerender = true` to prerender all routes at build time
 
 ---
 
@@ -117,10 +121,10 @@ SvelteKit file-based routing is used. Key conventions:
 
 Blog posts live at:
 ```
-src/routes/blog/posts/<slug>/index.md
+src/routes/blog/posts/<slug>/+page.md
 ```
 
-The `index.md` file uses mdsvex and **must** include this frontmatter:
+The `+page.md` file uses mdsvex and **must** include this frontmatter:
 
 ```yaml
 ---
@@ -136,7 +140,7 @@ date: "YYYY-MM-DD"
 ```
 
 - Layout is automatically applied via `mdsvex.config.js` (maps to `src/routes/blog/_layout.svelte`).
-- Posts are discovered at build time via `import.meta.glob` in `getBlogPosts.json.ts`.
+- Posts are discovered at build time via `import.meta.glob` in `src/routes/blog/getBlogPosts.json/+server.ts`.
 - Sorted newest-first by `date`.
 - Slugs are derived from the directory path (e.g., `blog/posts/react-hooks-an-overview`).
 
@@ -146,7 +150,7 @@ date: "YYYY-MM-DD"
 
 Project entries live at:
 ```
-src/routes/projects/entries/<slug>/index.md
+src/routes/projects/entries/<slug>/+page.md
 ```
 
 Required frontmatter:
@@ -167,17 +171,17 @@ layout: "projects"
 ```
 
 - Layout is mapped to `src/routes/projects/_layout.svelte` via the `layout: "projects"` frontmatter key.
-- Entries are discovered via `import.meta.glob` in `getProjectEntries.json.ts`.
+- Entries are discovered via `import.meta.glob` in `src/routes/projects/getProjectEntries.json/+server.ts`.
 - Sorted newest-first by `startDate`.
 
 ---
 
 ## Styling
 
-- **TailwindCSS v2** with JIT mode. Config in `tailwind.config.cjs`.
-- Global styles in `src/app.postcss` (imported in the root layout). This file includes Tailwind directives and the Prism **Synthwave '84** syntax highlighting theme for code blocks.
+- **TailwindCSS v4** with CSS-based config. No `tailwind.config.cjs` — configuration is done via `@import "tailwindcss"` and `@plugin` directives in `src/app.postcss`.
+- Global styles in `src/app.postcss` (imported in the root layout). This file includes the Tailwind import, typography plugin, and the Prism **Synthwave '84** syntax highlighting theme for code blocks.
 - Extended theme colors: `emerald` and `fuchsia` from Tailwind's color palette.
-- Typography plugin (`@tailwindcss/typography`) is enabled; prose styles use `prose-emerald`.
+- Typography plugin (`@tailwindcss/typography`) is enabled via `@plugin "@tailwindcss/typography"`; prose styles use `prose-emerald`.
 - The `code::before` and `code::after` content is suppressed globally to avoid backtick artifacts around inline code.
 
 ---
@@ -187,8 +191,8 @@ layout: "projects"
 - Shared types are in `src/types.d.ts`:
   - `BlogPostCardDetails` — shape of a blog post card (title, description, tags, created, icon, slug)
   - `ProjectEntryCardDetails` — shape of a project entry card (title, description, technologiesUsed, coverPhoto, startDate, endDate, slug)
-- ESLint uses `@typescript-eslint/parser` and `eslint-plugin-svelte3`.
-- `tsconfig.json` is at the root.
+- ESLint uses `@typescript-eslint/parser` and `eslint-plugin-svelte` (flat config in `eslint.config.js`).
+- `tsconfig.json` extends `.svelte-kit/tsconfig.json` and is at the root.
 
 ---
 
@@ -208,10 +212,10 @@ npm run build
 npm run preview
 
 # Type-check Svelte files
-npm run svelte-check
+npm run check
 ```
 
-The `postbuild` script copies `build/404/index.html` to `build/404.html` and removes the `build/404/` directory (required for static 404 handling on hosting platforms).
+`@sveltejs/adapter-static` v3 outputs flat `.html` files directly (e.g., `build/404.html`, `build/blog.html`). No postbuild scripts are needed.
 
 ---
 
@@ -219,7 +223,7 @@ The `postbuild` script copies `build/404/index.html` to `build/404.html` and rem
 
 - The `SEOMetaHeader` component (`src/components/SEO/SEOMetaHeader.svelte`) is used on listing pages.
 - Individual blog and project pages render their own `<svelte:head>` with full Open Graph and Twitter Card meta tags inside their respective `_layout.svelte` files.
-- A `sitemap.xml` is generated at build time via `src/routes/sitemap.xml.ts`.
+- A `sitemap.xml` is generated at build time via `src/routes/sitemap.xml/+server.ts`.
 - A `manifest.webmanifest` and service worker are included in `static/` for PWA support.
 
 ---
