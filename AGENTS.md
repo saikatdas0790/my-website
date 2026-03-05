@@ -281,6 +281,11 @@ cd ansible && ./init_vault.sh
 | `CLOUDFLARE_ZONE_ID` | Plaintext in `vars/main.yml` |
 | `CLOUDFLARE_ACCOUNT_ID` | Plaintext in `vars/main.yml` |
 
+The API token (named `my-website` in Cloudflare) has the following permissions:
+- `Account → Cloudflare Pages: Edit`
+- `Zone → DNS: Edit`
+- `Account → Workers Scripts: Edit`
+
 **Regenerate `.env` after editing secrets:**
 ```bash
 cd ansible && ansible-playbook setup_env.yml
