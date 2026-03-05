@@ -1,7 +1,11 @@
-@tailwind base;
-/* Write your global styles here, in PostCSS syntax */
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Suppress backtick artifacts added by the typography plugin around inline code */
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none;
+}
 
 /*
  * Synthwave '84 Theme originally by Robb Owen [@Robb0wen] for Visual Studio Code
