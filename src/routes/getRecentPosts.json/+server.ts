@@ -3,7 +3,7 @@ import type { RequestHandler } from "@sveltejs/kit";
 
 export const prerender = true;
 import { parse } from "path";
-import type { BlogPostCardDetails } from "src/types";
+import type { BlogPostCardDetails } from "$types";
 
 export const GET: RequestHandler = async () => {
   const modules = import.meta.glob("../blog/posts/**/*+page.md");

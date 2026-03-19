@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ProjectEntryCardDetails } from "src/types";
+  import type { ProjectEntryCardDetails } from "$types";
   import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
   import ProjectEntryCard from "$components/ProjectEntryCard/ProjectEntryCard.svelte";
 

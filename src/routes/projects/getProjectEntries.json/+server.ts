@@ -1,7 +1,7 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "@sveltejs/kit";
 import { parse } from "path";
-import type { ProjectEntryCardDetails } from "src/types";
+import type { ProjectEntryCardDetails } from "$types";
 
 export const GET: RequestHandler = async () => {
   const modules = import.meta.glob("../entries/**/*+page.md");

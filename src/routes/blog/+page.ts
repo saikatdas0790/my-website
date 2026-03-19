@@ -1,4 +1,4 @@
-import type { BlogPostCardDetails } from "src/types";
+import type { BlogPostCardDetails } from "$types";
 
 export const load = async ({ fetch }: { fetch: typeof globalThis.fetch }) => {
     const response = await fetch("/blog/getBlogPosts.json");

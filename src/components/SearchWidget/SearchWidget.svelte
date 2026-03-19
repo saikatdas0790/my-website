@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Index } from "lunr";
-  import type { BlogPostCardDetails } from "src/types";
+  import { Index } from "lunr";
+  import type { BlogPostCardDetails } from "$types";
 
   export let searchText = "";
   export let filteredPosts: BlogPostCardDetails[];

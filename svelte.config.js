@@ -22,6 +22,7 @@ const config = {
       $components: "./src/components",
       $utils: "./src/utils",
       $icons: "./src/icons",
+      $types: "./src/types.d.ts",
     },
   },
 };

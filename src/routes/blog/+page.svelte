@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPostCardDetails } from "src/types";
+  import type { BlogPostCardDetails } from "$types";
   import SeoMetaHeader from "$components/SEO/SEOMetaHeader.svelte";
   import BlogPostCard from "$components/BlogPostCard/BlogPostCard.svelte";
   import SearchWidget from "$components/SearchWidget/SearchWidget.svelte";

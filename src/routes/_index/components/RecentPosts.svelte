@@ -1,6 +1,6 @@
 <script lang="ts">
   import BlogPostCard from "$components/BlogPostCard/BlogPostCard.svelte";
-  import type { BlogPostCardDetails } from "src/types";
+  import type { BlogPostCardDetails } from "$types";
 
   export let recentPosts: BlogPostCardDetails[];
 </script>

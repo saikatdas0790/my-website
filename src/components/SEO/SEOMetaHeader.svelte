@@ -16,14 +16,14 @@
   <meta name="twitter:description" content={siteDescription} />
   <meta
     name="twitter:image"
-    content={`https://${$page.host}/assets/logos/logo-square-192.png`} />
+    content={`https://${$page.url.host}/assets/logos/logo-square-192.png`} />
 
   <!-- Open Graph data -->
-  <meta property="og:url" content={`https://${$page.host}${$page.path}`} />
+  <meta property="og:url" content={`https://${$page.url.host}${$page.url.pathname}`} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={siteTitle} />
   <meta property="og:description" content={siteDescription} />
   <meta
     property="og:image"
-    content={`https://${$page.host}/assets/logos/logo-square-192.png`} />
+    content={`https://${$page.url.host}/assets/logos/logo-square-192.png`} />
 </svelte:head>
