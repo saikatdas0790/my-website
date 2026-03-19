@@ -35,5 +35,5 @@ jobs:
         with:
           imageName: ghcr.io/${{ github.repository_owner }}/my-website-devcontainer
           cacheFrom: ghcr.io/${{ github.repository_owner }}/my-website-devcontainer
-          runCmd: .devcontainer/postCreate.sh && npm ci && npm run check && npm run lint
+          runCmd: .devcontainer/postCreate.sh && npm ci && npm run check && npm run lint && npm run build
           push: never
