@@ -7,7 +7,7 @@
 
   export let data: { blogPosts: BlogPostCardDetails[] };
   $: blogPosts = data.blogPosts;
-  $: filteredPosts = data.blogPosts;
+  let filteredPosts = data.blogPosts;
 </script>
 
 <style>
