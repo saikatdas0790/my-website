@@ -29,7 +29,7 @@
     "mdsvex": "^0.12.6",
     "postcss": "^8.5.8",
     "postcss-load-config": "^6.0.1",
-    "svelte": "^5.53.7",
+    "svelte": "^5.54.1",
     "svelte-check": "^4.4.5",
     "svelte-preprocess": "^6.0.3",
     "tailwindcss": "^4.2.1",
