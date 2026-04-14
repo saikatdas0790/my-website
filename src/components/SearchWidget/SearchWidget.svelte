@@ -20,9 +20,9 @@
 
   $: {
     if (isIndexLoaded && searchText && searchResults && searchResults.length) {
-      filteredPosts = searchResults.map((result) =>
-        blogPosts.find((blogPost) => blogPost.slug === result.ref),
-      );
+      filteredPosts = searchResults
+        .map((result) => blogPosts.find((blogPost) => blogPost.slug === result.ref))
+        .filter((post): post is BlogPostCardDetails => post !== undefined);
     } else {
       filteredPosts = blogPosts;
     }
