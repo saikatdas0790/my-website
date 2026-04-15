@@ -25,6 +25,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"mhutchie.git-graph",
 				"svelte.svelte-vscode"
 			]
 		}
