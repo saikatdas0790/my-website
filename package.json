@@ -19,7 +19,7 @@
     "@types/node": "^25.5.0",
     "@typescript-eslint/eslint-plugin": "^8.58.2",
     "@typescript-eslint/parser": "^8.58.2",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "cssnano": "^7.1.3",
     "date-fns": "^4.1.0",
     "eslint": "^10.2.0",
