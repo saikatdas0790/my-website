@@ -16,7 +16,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/typography": "^0.5.20",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^25.5.0",
+    "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^8.58.2",
     "@typescript-eslint/parser": "^8.58.2",
     "autoprefixer": "^10.5.0",
